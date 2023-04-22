@@ -1,22 +1,21 @@
 
-#include <iostream>
-#include <vector>
-#include <map>
-#include <set>
-#include <string>
 #include <algorithm>
-#include <unordered_map>
+#include <iostream>
+#include <map>
 #include <math.h>
+#include <set>
 #include <stdio.h>
+#include <string.h>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 using namespace std;
 
 int solution(long long n)
 {
 
-   
-
-    return 0;
+       return 0;
 }
 
 int main()
