@@ -27,3 +27,22 @@ int main()
 
     return 0;
 }
+
+int solution(int left, int right, int k, vector<int> &prices)
+{
+    return 0;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    for (int c = 0; c < n; ++c)
+    {
+
+        solution(left, right, k, prices);
+    }
+
+    return 0;
+}
