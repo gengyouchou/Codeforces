@@ -15,7 +15,7 @@ using namespace std;
 int solution(long long n)
 {
 
-       return 0;
+    return 0;
 }
 
 int main()
@@ -28,12 +28,12 @@ int main()
     return 0;
 }
 
-
-
 #include <algorithm>
+#include <functional> // std::minus
 #include <iostream>
 #include <map>
 #include <math.h>
+#include <numeric> // std::accumulate
 #include <set>
 #include <stdio.h>
 #include <string.h>
