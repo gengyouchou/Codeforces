@@ -1,22 +1,21 @@
 
-#include <iostream>
-#include <vector>
-#include <map>
-#include <set>
-#include <string>
 #include <algorithm>
-#include <unordered_map>
+#include <iostream>
+#include <map>
 #include <math.h>
+#include <set>
 #include <stdio.h>
+#include <string.h>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 using namespace std;
 
 int solution(long long n)
 {
 
-   
-
-    return 0;
+       return 0;
 }
 
 int main()
@@ -47,6 +46,9 @@ bool solution(vector<int> &nums)
 {
 
     
+int solution(int left, int right, int k, vector<int> &prices)
+{
+    return 0;
 }
 
 int main()
@@ -57,6 +59,17 @@ int main()
     for (int i = 0; i < n; ++i)
     {
         
+    }
+
+    return 0;
+}
+    int n;
+    cin >> n;
+
+    for (int c = 0; c < n; ++c)
+    {
+
+        solution(left, right, k, prices);
     }
 
     return 0;
