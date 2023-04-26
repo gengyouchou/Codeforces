@@ -16,65 +16,37 @@ using namespace std;
 int solution(vector<int> &nums)
 {
 
-    // 2 3 4 4 2 1 3 1
-
-    // [1 3] [1 3] [2 2] [4 4]
-
-    // 1 1 2 2 3 3 4 4
-
     int n = nums.size();
     int cars = 0;
-    int count[5];
-
-    memset(count, 0, 5);
+    int count[5] = {0};
 
     for (int i = 0; i < n; ++i)
     {
         int cur = nums[i];
-        // cout << cur << endl;
         count[cur] += 1;
     }
 
-    int total = n;
+    int m31 = min(count[3], count[1]);
+    cars += m31;
+    count[3] -= m31;
+    count[1] -= m31;
 
-    while (count[4] > 0 && total > 0)
+    if (count[2] > 0 && count[1] >= 2)
     {
-        --total;
-        --count[4];
-        ++cars;
+        int m211 = min(count[2], count[1]/2);
+        cars += m211;
+        count[2] -= m211;
+        count[1] -= m211 * 2;
     }
 
-    while (count[3] > 0 && count[1] > 0 && total > 0)
-    {
-        total -= 2;
-        --count[3];
-        --count[1];
-        ++cars;
-    }
+    int m21 = min(count[2], count[1]);
+    cars += m21;
+    count[2] -= m21;
+    count[1] -= m21;
 
-    while (count[2] > 0 && count[1] > 2 && total > 0)
-    {
-        --count[2];
-        count[1] -= 2;
-        total -= 3;
-        ++cars;
-    }
+    cars += count[1] / 4 + (count[1] % 4 != 0) + count[2] / 2 + (count[2] % 2 != 0) + count[3] + count[4];
 
-    while (count[2] > 2 && total > 0)
-    {
-        count[2] -= 2;
-        total -= 2;
-        ++cars;
-    }
-
-    while (count[1] > 4 && total > 0)
-    {
-        count[1] -= 4;
-        total -= 4;
-        ++cars;
-    }
-
-    return cars + total;
+    return cars;
 }
 
 int main()
