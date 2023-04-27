@@ -25,55 +25,13 @@ int main()
 
         cin >> n >> len >> freq;
 
-        unordered_map<char, int> m;
-        int j = 0;
-
-        string s = "";
+        string s(n, 0);
 
         int curFreq = 0;
 
         for (int i = 0; i < n; ++i)
         {
-
-            while (j < n && j - i + 1 <=len)
-            {
-
-                if (curFreq < freq)
-                {
-                    for (int k = 0; k < 26; ++k)
-                    {
-                        if (m['a' + k] == 0)
-                        {
-                            s.insert(s.end(), 'a' + k);
-                            ++m['a' + k];
-                            break;
-                        }
-                    }
-
-                    ++curFreq;
-                }
-                else
-                {
-                    for (int k = 0; k < 26; ++k)
-                    {
-                        if (m['a' + k] > 0)
-                        {
-                            s.insert(s.end(), 'a' + k);
-                            ++m['a' + k];
-                            break;
-                        }
-                    }
-                }
-
-                ++j;
-            }
-
-            --m[s[i]];
-
-            if (m[s[i]] == 0)
-            {
-                --curFreq;
-            }
+            s[i] = ('a' + i % freq);
         }
 
         cout << s;
