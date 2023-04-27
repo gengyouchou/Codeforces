@@ -22,24 +22,21 @@ int main()
 
     cin >> n >> s;
 
-    int rm = 0;
-
-    stack<char> stk;
+    int c0 = 0, c1 = 0;
 
     for (int i = 0; i < n; ++i)
     {
-        if (!stk.empty() && stk.top() != s[i])
+        if (s[i] == '1')
         {
-            rm += 2;
-            stk.pop();
+            ++c1;
         }
         else
         {
-            stk.push(s[i]);
+            ++c0;
         }
     }
 
-    cout << n - rm;
+    cout << n - 2 * min(c0, c1);
 
     cout << endl;
 
