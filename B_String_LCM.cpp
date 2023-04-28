@@ -28,46 +28,28 @@ int main()
         int m = s.size();
         int n = t.size();
 
-        int i = 0, j = 0;
+        int len = lcm(m, n);
 
-        int count = 0;
+        string ans = "";
+        bool flag = false;
 
-        while (i < m || j < n)
+        for (int i = 0; i < len; ++i)
         {
-
-            if (i == m)
+            if (s[i % m] == t[i % n])
             {
-                ++count;
-                i = 0;
-            }
-
-            if (j == n)
-            {
-                j = 0;
-            }
-
-            if (s[i] == t[j])
-            {
-                ++i;
-                ++j;
+                ans.insert(ans.end(), t[i % n]);
             }
             else
             {
+                flag = true;
                 cout << -1;
                 break;
             }
         }
 
-        if (i == m && j == n)
+        if (flag == false)
         {
-
-            string temp = s;
-
-            for (int i = 0; i < count; ++i)
-            {
-                s = s + temp;
-            }
-            cout << s;
+            cout << ans;
         }
 
         cout << endl;
