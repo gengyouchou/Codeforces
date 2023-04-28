@@ -26,18 +26,17 @@ int main()
         cin >> nums[i];
     }
 
-    sort(nums.begin(), nums.end());
     int count = 0;
 
-    for (int i = 2; i < n; i += 3)
+    for (int i = 0; i < n; ++i)
     {
-        if (nums[i] + k <= 5)
+        if (5 - nums[i] >= k)
         {
             ++count;
         }
     }
 
-    cout << count;
+    cout << count / 3;
 
     cout << endl;
 
