@@ -26,23 +26,10 @@ int main()
         cin >> source >> target;
 
         int diff = abs(source - target);
-        int count = 0;
 
-        for (int k = 10; k >= 1; --k)
-        {
-            if (diff == 0)
-            {
-                break;
-            }
+        int k = 10;
 
-            if (diff % k >= 0)
-            {
-                count = count + (diff / k);
-                diff = diff % k;
-            }
-        }
-
-        cout << count;
+        cout << (diff + k - 1) / k;
 
         cout << endl;
     }
