@@ -39,17 +39,7 @@ void solve(vector<int> &nums)
         }
     }
 
-    while (c2 > 0 && p1 + 2 < total / 2)
-    {
-        p1 = p1 + 2;
-    }
-
-    while (c1 > 0 && p1 < total / 2)
-    {
-        p1 = p1 + 1;
-    }
-
-    if (p1 == total / 2 || p1 + 2 == total / 2)
+    if ((total / 2) % 2 == 0 || c1 > 0)
     {
         cout << "YES" << endl;
     }
