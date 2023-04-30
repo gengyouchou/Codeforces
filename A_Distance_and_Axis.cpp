@@ -24,7 +24,41 @@ int main()
 
         cin >> a >> k;
 
-        (b-0)+(a-b)=k
+        int diff = 0;
+
+        if (a <= k)
+        {
+            diff = k - a;
+        }
+        else
+        {
+            if ((k + a) % 2 == 0)
+            {
+                diff = 0;
+            }
+            else
+            {
+                diff = 1;
+            }
+        }
+
+        cout << diff << endl;
+
+        // b-abs(4-b)=0
+
+        // b-(5-b)=8
+
+        // b-(5-b)=1
+
+        // 3-(5-3)
+
+        // 2b-a=k
+
+        // 2b-5=2
+
+        // 0    4  6
+
+        // k=2
     }
 
     return 0;
