@@ -5,12 +5,12 @@
 #include <math.h>
 #include <numeric> // std::accumulate
 #include <set>
+#include <stack>
 #include <stdio.h>
 #include <string.h>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <stack>
 
 using namespace std;
 
@@ -39,26 +39,30 @@ int main()
 
         vector<int> blue(m, 0);
 
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < m; ++i)
         {
             cin >> blue[i];
         }
 
         int sr = 0;
+        int mxsr = 0;
 
         for (int i = 0; i < n; ++i)
         {
-            sr = max(sr + red[i], red[i]);
+            sr = sr + red[i];
+            mxsr = max(mxsr, sr);
         }
 
         int sb = 0;
+        int mxsb = 0;
 
         for (int i = 0; i < m; ++i)
         {
-            sb = max(sb + blue[i], blue[i]);
+            sb = sb + blue[i];
+            mxsb = max(mxsb, sb);
         }
 
-        cout << sb + sr;
+        cout << mxsb + mxsr;
 
         cout << endl;
     }
