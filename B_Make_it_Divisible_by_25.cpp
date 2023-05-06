@@ -5,7 +5,6 @@
 #include <math.h>
 #include <numeric> // std::accumulate
 #include <set>
-#include <stack>
 #include <stdio.h>
 #include <string.h>
 #include <string>
@@ -21,24 +20,24 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
+        string s = "";
 
-        int n = 0;
+        cin >> s;
 
-        cin >> n;
+        int n = s.size();
 
-        vector<long long> nums(n, 0);
+        int ans = INT_MAX;
 
         for (int i = 0; i < n; ++i)
         {
-            cin >> nums[i];
+            for (int j = i + 1; j < n; ++j)
+            {
+                if (((s[i] - '0') * 10 + (s[j] - '0')) % 25 == 0)
+                {
+                    ans = min(ans, (j - i - 1) + (n - j - 1));
+                }
+            }
         }
-
-        long long sum = accumulate(nums.begin(), nums.end(), 0ll);
-
-        long long cap = sum / n;
-        long long r = sum % n;
-
-        long long ans = r * (n - r);
 
         cout << ans;
         cout << endl;

@@ -5,7 +5,6 @@
 #include <math.h>
 #include <numeric> // std::accumulate
 #include <set>
-#include <stack>
 #include <stdio.h>
 #include <string.h>
 #include <string>
@@ -21,28 +20,43 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
-
         int n = 0;
-
         cin >> n;
 
-        vector<long long> nums(n, 0);
+        string s(n, 0);
 
         for (int i = 0; i < n; ++i)
         {
-            cin >> nums[i];
+            cin >> s[i];
         }
 
-        long long sum = accumulate(nums.begin(), nums.end(), 0ll);
+        for (int i = 0; i < n; ++i)
+        {
+            if (s[i] == '?')
+            {
+                if (i > 0 && s[i - 1] == 'B')
+                {
+                    s[i] = 'R';
+                }
+                else
+                {
+                    s[i] = 'B';
+                }
+            }
 
-        long long cap = sum / n;
-        long long r = sum % n;
-
-        long long ans = r * (n - r);
-
-        cout << ans;
+            cout << s[i];
+        }
         cout << endl;
     }
 
     return 0;
 }
+
+// 7
+
+// ?????B?
+
+
+// BRBRBBR
+
+// RBRBRBR
