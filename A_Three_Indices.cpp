@@ -34,36 +34,13 @@ int main()
 
         int a0 = -1, a1 = -1, a2 = -1;
 
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i + 2 < n; ++i)
         {
-
-            a1 = i;
-
-            for (int l = 0; l < i; ++l)
+            if (nums[i] < nums[i + 1] && nums[i + 2] < nums[i + 1])
             {
-                if (nums[l] < nums[i])
-                {
-                    a0 = l;
-                    break;
-                }
-            }
-
-            for (int r = i + 1; r < n; ++r)
-            {
-                if (nums[r] < nums[i])
-                {
-                    a2 = r;
-                    break;
-                }
-            }
-
-            if (a0 != -1 && a1 != -1 && a2 != -1)
-            {
-                break;
-            }
-            else
-            {
-                a0 = a1 = a2 = -1;
+                a0 = i;
+                a1 = i + 1;
+                a2 = i + 2;
             }
         }
 
