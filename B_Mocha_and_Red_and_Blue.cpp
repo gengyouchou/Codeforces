@@ -32,9 +32,49 @@ int main()
 
         for (int i = 0; i < n; ++i)
         {
+            if (s[i] != '?')
+            {
+                for (int k = i - 1; k >= 0; --k)
+                {
+
+                    if (s[k] != '?')
+                    {
+                        break;
+                    }
+                    if (s[k + 1] == 'B')
+                    {
+                        s[k] = 'R';
+                    }
+                    else
+                    {
+                        s[k] = 'B';
+                    }
+                }
+
+                for (int k = i + 1; k < n; ++k)
+                {
+                    if (s[k] != '?')
+                    {
+                        break;
+                    }
+
+                    if (s[k - 1] == 'B')
+                    {
+                        s[k] = 'R';
+                    }
+                    else
+                    {
+                        s[k] = 'B';
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < n; ++i)
+        {
             if (s[i] == '?')
             {
-                if (i > 0 && s[i - 1] == 'B')
+                if (i - 1 >= 0 && s[i - 1] == 'B')
                 {
                     s[i] = 'R';
                 }
@@ -43,9 +83,9 @@ int main()
                     s[i] = 'B';
                 }
             }
-
-            cout << s[i];
         }
+
+        cout << s;
         cout << endl;
     }
 
@@ -55,7 +95,6 @@ int main()
 // 7
 
 // ?????B?
-
 
 // BRBRBBR
 
