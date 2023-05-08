@@ -17,19 +17,25 @@ bool solve(string &s, int k)
 {
     int n = s.size();
 
-    for (int len = 1; len <= n - 2 * k; ++len)
-    {
-        string left = s.substr(0, (n - len) / 2 + (n - len) % 2);
-        string right = s.substr((n + len) / 2 + (n - len) % 2);
+    int i = 0, j = n - 1;
 
-        reverse(right.begin(), right.end());
-        if (left == right)
-        {
-            return true;
-        }
+    if (k * 2 >= n)
+    {
+        return false;
     }
 
-    return false;
+    while (k--)
+    {
+        if (s[i] != s[j])
+        {
+            return false;
+        }
+
+        ++i;
+        --j;
+    }
+
+    return true;
 }
 
 int main()
