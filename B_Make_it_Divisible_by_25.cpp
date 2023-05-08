@@ -20,13 +20,26 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
+        string s = "";
 
-        int h, w, x, y;
+        cin >> s;
 
-        cin >> h >> w >> x >> y;
+        int n = s.size();
 
-        cout << 1 << " " << 1 << " " << h << " " << w;
+        int ans = INT_MAX;
 
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = i + 1; j < n; ++j)
+            {
+                if (((s[i] - '0') * 10 + (s[j] - '0')) % 25 == 0)
+                {
+                    ans = min(ans, (j - i - 1) + (n - j - 1));
+                }
+            }
+        }
+
+        cout << ans;
         cout << endl;
     }
 

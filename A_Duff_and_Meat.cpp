@@ -15,20 +15,23 @@ using namespace std;
 
 int main()
 {
-    int t;
-    cin >> t;
+    int days;
+    cin >> days;
 
-    for (int c = 0; c < t; ++c)
+    int mn = INT_MAX;
+    int sum = 0;
+
+    while (days--)
     {
+        int count = 0, cost = 0;
 
-        int h, w, x, y;
+        cin >> count >> cost;
 
-        cin >> h >> w >> x >> y;
-
-        cout << 1 << " " << 1 << " " << h << " " << w;
-
-        cout << endl;
+        mn = min(mn, cost);
+        sum = sum + mn * count;
     }
+
+    cout << sum << endl;
 
     return 0;
 }

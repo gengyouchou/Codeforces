@@ -15,20 +15,10 @@ using namespace std;
 
 int main()
 {
-    int t;
-    cin >> t;
+    int n = 0;
+    cin >> n;
 
-    for (int c = 0; c < t; ++c)
-    {
-
-        int h, w, x, y;
-
-        cin >> h >> w >> x >> y;
-
-        cout << 1 << " " << 1 << " " << h << " " << w;
-
-        cout << endl;
-    }
+    cout << 0 << " " << 0 << " " << n;
 
     return 0;
 }

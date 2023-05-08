@@ -21,11 +21,26 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        int h, w, x, y;
+        int n = 0;
 
-        cin >> h >> w >> x >> y;
+        cin >> n;
 
-        cout << 1 << " " << 1 << " " << h << " " << w;
+        int count = n / 2;
+        int r = n % 2;
+
+        if (r > 0)
+        {
+            cout << 7;
+        }
+        else
+        {
+            cout << 1;
+        }
+
+        for (int i = 1; i < count; ++i)
+        {
+            cout << 1;
+        }
 
         cout << endl;
     }

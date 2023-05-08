@@ -21,11 +21,23 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        int h, w, x, y;
+        int n = 0;
 
-        cin >> h >> w >> x >> y;
+        cin >> n;
 
-        cout << 1 << " " << 1 << " " << h << " " << w;
+        vector<int> nums(n, 0);
+
+        for (int i = 0; i < n; ++i)
+        {
+            cin >> nums[i];
+        }
+
+        sort(nums.rbegin(), nums.rend());
+
+        for (int i = 0; i < n; ++i)
+        {
+            cout << nums[i] << " ";
+        }
 
         cout << endl;
     }
