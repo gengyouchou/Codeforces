@@ -13,37 +13,6 @@
 
 using namespace std;
 
-bool flag = false;
-void dfs(int n, map<int, int> visited)
-{
-    if (n == 0)
-    {
-        for (auto [val, freq] : visited)
-        {
-            cout << freq << " ";
-        }
-
-        flag = true;
-        return;
-    }
-
-    if (n < 0 || flag == true)
-    {
-        return;
-    }
-
-    ++visited[3];
-    dfs(n - 3, visited);
-
-    --visited[3];
-    ++visited[5];
-    dfs(n - 5, visited);
-
-    --visited[5];
-    ++visited[7];
-    dfs(n - 7, visited);
-}
-
 int main()
 {
     int t;
@@ -56,19 +25,32 @@ int main()
 
         cin >> n;
 
-        // 3 5 7
-        flag = false;
-        map<int, int> visited;
-        visited[3] = 0;
-        visited[5] = 0;
-        visited[7] = 0;
+        // we can get any n
+        //  equal to [3,6,9,…]
+        // , [5,8,11,…]
+        //  or [7,10,13,…]
 
-        dfs(n, visited);
+        if (n != 1 && n != 2 && n != 4)
+        {
 
-        if (flag == false)
+            if (n % 3 == 0)
+            {
+                cout << n / 3 << " " << 0 << " " << 0;
+            }
+            else if (n % 3 == 2)
+            {
+                cout << n / 3 - 1 << " " << 1 << " " << 0;
+            }
+            else
+            {
+                cout << n / 3 - 2 << " " << 0 << " " << 1;
+            }
+        }
+        else
         {
             cout << -1;
         }
+
         cout << endl;
     }
 

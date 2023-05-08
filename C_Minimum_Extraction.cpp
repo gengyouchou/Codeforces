@@ -20,10 +20,9 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
+        int n = 0;
 
-        int n = 0, k = 0;
-
-        cin >> n >> k;
+        cin >> n;
 
         vector<int> nums(n, 0);
 
@@ -32,19 +31,19 @@ int main()
             cin >> nums[i];
         }
 
-        int cur = 1;
-        int count = 0;
+        sort(nums.begin(), nums.end());
+
+        int cur = 0;
+        int ans = INT_MIN;
 
         for (int i = 0; i < n; ++i)
         {
-            if (nums[i] == cur)
-            {
-                ++cur;
-                ++count;
-            }
+            nums[i] = nums[i] - cur;
+            cur += nums[i];
+            ans = max(ans, nums[i]);
         }
 
-        cout << (n - count + k - 1) / k;
+        cout << ans;
 
         cout << endl;
     }
