@@ -25,43 +25,27 @@ int main()
 
         cin >> n;
 
-        if (n == 1)
+        int step = n / 2 + n % 2;
+
+        cout << step << endl;
+        int i = 1;
+        int j = 3 * n;
+
+        while (i < j)
         {
-            cout << 1 << endl;
-            cout << 1 << " " << 2 << endl;
+            cout << i << " " << j << endl;
+            i += 3;
+            j -= 3;
         }
-        else
-        {
-            cout << n - 1 << endl;
-            int count = n - 1;
-
-            int j = 5;
-
-            for (int i = 1; i <= 3 * n; ++i)
-            {
-                if (i % 3 == 2)
-                {
-                    continue;
-                }
-
-                // while (j <= 3 * n && j % 3 != 2)
-                // {
-                //     ++j;
-                // }
-
-                cout << i << " " << j << endl;
-
-                j += 3;
-
-                if (--count == 0)
-                {
-                    break;
-                }
-            }
-        }
-
-        // // BAN BAN BAN
+        // // BAN BAN BAN  B  A  N
         //    123 456 789 10 11 12
+
+        //         2
+
+        // 1 12
+
+        // 4 9
+
         //    AAN BBN
         // AAABBNBNNBAN
 
