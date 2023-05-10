@@ -5,12 +5,12 @@
 #include <math.h>
 #include <numeric> // std::accumulate
 #include <set>
+#include <stack>
 #include <stdio.h>
 #include <string.h>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <stack>
 
 using namespace std;
 
@@ -37,7 +37,27 @@ long long count(vector<vector<int>> &mat, int i, int j)
         ++tj;
     }
 
-    return ans - mat[i][j];
+    ti = i;
+    tj = j;
+
+    while (ti >= 0 && tj < mat[0].size())
+    {
+        ans += mat[ti][tj];
+        --ti;
+        ++tj;
+    }
+
+    ti = i;
+    tj = j;
+
+    while (ti < mat.size() && tj >= 0)
+    {
+        ans += mat[ti][tj];
+        ++ti;
+        --tj;
+    }
+
+    return ans - mat[i][j] * 3;
 }
 
 int main()
