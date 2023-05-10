@@ -22,15 +22,17 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        int n = 0;
+        int m = 0, n = 0;
 
-        cin >> n;
+        cin >> m >> n;
 
-        vector<int> nums(n, 0);
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 1; i <= m; ++i)
         {
-            cin >> nums[i];
+            for (int j = 1; j <= n; ++j)
+            {
+                cout << ((i % 4 <= 1) == (j % 4 <= 1)) << " ";
+            }
+            cout << endl;
         }
 
         cout << endl;

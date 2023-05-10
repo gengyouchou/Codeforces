@@ -10,31 +10,31 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <stack>
 
 using namespace std;
 
 int main()
 {
-    int t;
-    cin >> t;
+    int n, m;
+    cin >> n >> m;
 
-    for (int c = 0; c < t; ++c)
+    // a^2+b=n
+    // a+b^2=m
+
+    int count = 0;
+    for (int i = 0; i <= sqrt(n * m); ++i)
     {
-
-        int n = 0;
-
-        cin >> n;
-
-        vector<int> nums(n, 0);
-
-        for (int i = 0; i < n; ++i)
+        for (int j = 0; j <= sqrt(n * m); ++j)
         {
-            cin >> nums[i];
+            if (i * i + j == n && j * j + i == m)
+            {
+                ++count;
+            }
         }
-
-        cout << endl;
     }
+
+    cout << count;
+    cout << endl;
 
     return 0;
 }

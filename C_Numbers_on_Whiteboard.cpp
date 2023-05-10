@@ -10,7 +10,6 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <stack>
 
 using namespace std;
 
@@ -21,19 +20,16 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
-
         int n = 0;
 
         cin >> n;
 
-        vector<int> nums(n, 0);
+        cout << 2 << endl;
 
-        for (int i = 0; i < n; ++i)
+        for (int i = n; i - 1 >= 1; --i)
         {
-            cin >> nums[i];
+            cout << i + (i < n) << " " << i - 1 << endl;
         }
-
-        cout << endl;
     }
 
     return 0;

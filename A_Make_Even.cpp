@@ -29,11 +29,11 @@ int main()
 
         if ((s[n - 1] - '0') % 2 == 0)
         {
-            cout << 1;
+            cout << 0;
         }
         else if ((s[0] - '0') % 2 == 0)
         {
-            cout << 0;
+            cout << 1;
         }
         else
         {
