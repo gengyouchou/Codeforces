@@ -21,12 +21,23 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
-        string s;
-        cin >> s;
 
-        sort(s.begin(), s.end());
+        int n = 0;
 
-        cout << s << endl;
+        cin >> n;
+
+        vector<int> nums(n, 0);
+
+        for (int i = 0; i < n; ++i)
+        {
+            cin >> nums[i];
+        }
+
+        sort(nums.begin(), nums.end());
+
+        
+
+        cout << endl;
     }
 
     return 0;
