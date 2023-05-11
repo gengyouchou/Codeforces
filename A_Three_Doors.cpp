@@ -22,34 +22,28 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        int n = 0;
+        int key = 0;
 
-        cin >> n;
+        cin >> key;
 
-        vector<int> nums(n, 0);
+        vector<int> nums(3, 0);
 
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < 3; ++i)
         {
             cin >> nums[i];
         }
 
-        int ans = 0;
-
-        for (int i = 0; i + 1 < n; ++i)
+        if (nums[key - 1] != 0 && nums[nums[key - 1] - 1] != 0)
         {
-            ans = max(ans, nums[i] - nums[i + 1]);
+            cout << "YES";
         }
-
-        auto mxptr = max_element(nums.begin(), nums.end());
-        auto mnptr = min_element(nums.begin(), nums.end());
-
-        cout << max(ans, max(*mxptr - nums[0], nums[n - 1] - *mnptr));
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
 
     return 0;
 }
-
-// 2 1 8 1
-// 1 2 1 8

@@ -33,23 +33,25 @@ int main()
             cin >> nums[i];
         }
 
-        int ans = 0;
+        int countOdd = 0;
+        int countEven = 0;
 
-        for (int i = 0; i + 1 < n; ++i)
+        for (int i = 0; i < n; ++i)
         {
-            ans = max(ans, nums[i] - nums[i + 1]);
+            if (nums[i] % 2 == 0)
+            {
+                ++countEven;
+            }
+            else
+            {
+                ++countOdd;
+            }
         }
 
-        auto mxptr = max_element(nums.begin(), nums.end());
-        auto mnptr = min_element(nums.begin(), nums.end());
-
-        cout << max(ans, max(*mxptr - nums[0], nums[n - 1] - *mnptr));
+        cout << min(countEven, countOdd);
 
         cout << endl;
     }
 
     return 0;
 }
-
-// 2 1 8 1
-// 1 2 1 8

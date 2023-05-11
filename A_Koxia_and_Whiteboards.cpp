@@ -21,35 +21,24 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
+        int n = 0, op = 0;
 
-        int n = 0;
+        cin >> n >> op;
 
-        cin >> n;
+        vector<int> nums(n + op, 0);
 
-        vector<int> nums(n, 0);
-
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n + op; ++i)
         {
             cin >> nums[i];
         }
 
-        int ans = 0;
+        sort(nums.begin(), nums.end() - 1);
+        reverse(nums.begin(), nums.end());
 
-        for (int i = 0; i + 1 < n; ++i)
-        {
-            ans = max(ans, nums[i] - nums[i + 1]);
-        }
-
-        auto mxptr = max_element(nums.begin(), nums.end());
-        auto mnptr = min_element(nums.begin(), nums.end());
-
-        cout << max(ans, max(*mxptr - nums[0], nums[n - 1] - *mnptr));
+        cout << accumulate(nums.begin(), nums.begin() + n, 0ll);
 
         cout << endl;
     }
 
     return 0;
 }
-
-// 2 1 8 1
-// 1 2 1 8

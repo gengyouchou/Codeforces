@@ -22,34 +22,34 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        int n = 0;
+        string s;
+        cin >> s;
 
-        cin >> n;
+        // same letters must paint difference color
 
-        vector<int> nums(n, 0);
+        unordered_map<char, int> m;
 
-        for (int i = 0; i < n; ++i)
+        int n = s.size();
+
+        for (char &c : s)
         {
-            cin >> nums[i];
+            ++m[c];
         }
 
-        int ans = 0;
+        int count = 0;
 
-        for (int i = 0; i + 1 < n; ++i)
+        for (auto [val, freq] : m)
         {
-            ans = max(ans, nums[i] - nums[i + 1]);
+            if (freq >= 2)
+            {
+                ++count;
+            }
         }
 
-        auto mxptr = max_element(nums.begin(), nums.end());
-        auto mnptr = min_element(nums.begin(), nums.end());
-
-        cout << max(ans, max(*mxptr - nums[0], nums[n - 1] - *mnptr));
+        cout << (m.size() + count) / 2;
 
         cout << endl;
     }
 
     return 0;
 }
-
-// 2 1 8 1
-// 1 2 1 8

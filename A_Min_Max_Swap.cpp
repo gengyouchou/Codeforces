@@ -26,30 +26,34 @@ int main()
 
         cin >> n;
 
-        vector<int> nums(n, 0);
+        vector<int> numsA(n, 0);
 
         for (int i = 0; i < n; ++i)
         {
-            cin >> nums[i];
+            cin >> numsA[i];
         }
 
-        int ans = 0;
+        vector<int> numsB(n, 0);
 
-        for (int i = 0; i + 1 < n; ++i)
+        for (int i = 0; i < n; ++i)
         {
-            ans = max(ans, nums[i] - nums[i + 1]);
+            cin >> numsB[i];
         }
 
-        auto mxptr = max_element(nums.begin(), nums.end());
-        auto mnptr = min_element(nums.begin(), nums.end());
+        for (int i = 0; i < n; ++i)
+        {
+            if (numsA[i] > numsB[i])
+            {
+                swap(numsA[i], numsB[i]);
+            }
+        }
 
-        cout << max(ans, max(*mxptr - nums[0], nums[n - 1] - *mnptr));
+        int mxA = *max_element(numsA.begin(), numsA.end());
+        int mxB = *max_element(numsB.begin(), numsB.end());
 
+        cout << mxA * mxB;
         cout << endl;
     }
 
     return 0;
 }
-
-// 2 1 8 1
-// 1 2 1 8
