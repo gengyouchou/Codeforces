@@ -36,54 +36,36 @@ int main()
             }
         }
 
-        int cur = -1, next = -1;
+        int cur = -1;
 
-        for (int j = 0; j < n - 1; ++j)
+        unordered_map<int, int> m;
+
+        for (int i = 0; i < n; ++i)
         {
-
-            unordered_map<int, int> m;
-
-            for (int i = 0; i < n; ++i)
-            {
-                ++m[nums[i][j]];
-            }
-
-            if (next == -1)
-            {
-                for (auto [val, freq] : m)
-                {
-                    if (freq == n - 1)
-                    {
-                        cur = val;
-                    }
-                    if (freq == 1)
-                    {
-                        next = val;
-                    }
-                }
-            }
-            else
-            {
-
-                int tempNext = next;
-
-                for (auto [val, freq] : m)
-                {
-                    if (tempNext == val)
-                    {
-                        cur = val;
-                    }
-                    else
-                    {
-                        next = val;
-                    }
-                }
-            }
-
-            cout << cur << " ";
+            ++m[nums[i][0]];
         }
 
-        cout << next;
+        for (auto [val, freq] : m)
+        {
+            if (freq == n - 1)
+            {
+                cur = val;
+                break;
+            }
+        }
+
+        cout << cur << " ";
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (nums[i][0] != cur)
+            {
+                for (int j = 0; j < n - 1; ++j)
+                {
+                    cout << nums[i][j] << " ";
+                }
+            }
+        }
 
         cout << endl;
     }
