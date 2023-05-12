@@ -33,9 +33,14 @@ int main()
             cin >> nums[i];
         }
 
-        sort(nums.begin(), nums.end());
+        long long ans = 0;
 
-        
+        for (int i = 0; i + 1 < n; ++i)
+        {
+            ans = max(ans, (long long)nums[i] * nums[i + 1]);
+        }
+
+        cout << ans;
 
         cout << endl;
     }

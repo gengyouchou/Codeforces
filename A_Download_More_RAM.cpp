@@ -22,28 +22,32 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        int n = 0;
+        int n = 0, k = 0;
 
-        cin >> n;
+        cin >> n >> k;
 
-        vector<int> nums(n, 0);
+        vector<vector<int>> cost(n, vector<int>(2, 0));
 
         for (int i = 0; i < n; ++i)
         {
-            cin >> nums[i];
+            cin >> cost[i][0];
         }
 
-        long long suffix = 0;
-        long long ans = 0;
-
-        for (int i = n - 1; i >= 0; --i)
+        for (int i = 0; i < n; ++i)
         {
-            suffix += nums[i];
-
-            ans = max(ans, suffix);
+            cin >> cost[i][1];
         }
 
-        cout << ans;
+        sort(cost.begin(), cost.end());
+
+        int i = 0;
+        while (i < n && k >= cost[i][0])
+        {
+            k += cost[i][1];
+            ++i;
+        }
+
+        cout << k;
 
         cout << endl;
     }

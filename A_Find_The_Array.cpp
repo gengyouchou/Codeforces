@@ -21,30 +21,29 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
-
         int n = 0;
 
         cin >> n;
 
-        vector<int> nums(n, 0);
+        int sum = 0;
 
-        for (int i = 0; i < n; ++i)
+        int cur = 1;
+
+        int count = 0;
+
+        while (sum + cur < n)
         {
-            cin >> nums[i];
+            sum += cur;
+            cur += 2;
+            ++count;
         }
 
-        long long suffix = 0;
-        long long ans = 0;
-
-        for (int i = n - 1; i >= 0; --i)
+        if (sum < n)
         {
-            suffix += nums[i];
-
-            ans = max(ans, suffix);
+            ++count;
         }
 
-        cout << ans;
-
+        cout << count;
         cout << endl;
     }
 

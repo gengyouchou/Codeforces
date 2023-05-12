@@ -33,17 +33,35 @@ int main()
             cin >> nums[i];
         }
 
-        long long suffix = 0;
-        long long ans = 0;
+        int count = 0;
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (nums[i] == 0)
+            {
+                ++count;
+            }
+        }
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (nums[i] == 1)
+            {
+                break;
+            }
+            --count;
+        }
 
         for (int i = n - 1; i >= 0; --i)
         {
-            suffix += nums[i];
-
-            ans = max(ans, suffix);
+            if (nums[i] == 1)
+            {
+                break;
+            }
+            --count;
         }
 
-        cout << ans;
+        cout << count;
 
         cout << endl;
     }
