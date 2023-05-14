@@ -22,28 +22,19 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
+        int n = 0;
         string s = "";
 
+        cin >> n;
         cin >> s;
 
-        int del0 = 0, del1 = 0;
-        int ans = 0;
+        int len = s.size();
 
-        for (char &c : s)
+        string ans = "";
+
+        for (int i = 0; i < len; i += 2)
         {
-            if (c == '1')
-            {
-                ++del0;
-            }
-            else
-            {
-                ++del1;
-            }
-
-            if (del0 != del1)
-            {
-                ans = min(del0, del1);
-            }
+            ans.insert(ans.end(), s[i]);
         }
 
         cout << ans;
@@ -53,3 +44,8 @@ int main()
 
     return 0;
 }
+
+// // 1110000
+// // 0110000
+// 0123456
+//     //    0100

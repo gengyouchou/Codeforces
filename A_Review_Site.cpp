@@ -22,31 +22,28 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        string s = "";
+        int n = 0;
 
-        cin >> s;
+        cin >> n;
 
-        int del0 = 0, del1 = 0;
-        int ans = 0;
+        vector<int> nums(n, 0);
 
-        for (char &c : s)
+        for (int i = 0; i < n; ++i)
         {
-            if (c == '1')
-            {
-                ++del0;
-            }
-            else
-            {
-                ++del1;
-            }
+            cin >> nums[i];
+        }
 
-            if (del0 != del1)
+        int upvote = 0;
+
+        for (int &num : nums)
+        {
+            if (num == 1 || num == 3)
             {
-                ans = min(del0, del1);
+                ++upvote;
             }
         }
 
-        cout << ans;
+        cout << upvote;
 
         cout << endl;
     }
