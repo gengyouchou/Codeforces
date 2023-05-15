@@ -22,9 +22,16 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        int n = 0;
+        int64_t attack, init, n;
 
-        cin >> n;
+        cin >> attack >> init >> n;
+
+        vector<int> power(n, 0);
+
+        for (int i = 0; i < n; ++i)
+        {
+            cin >> power[i];
+        }
 
         vector<int> nums(n, 0);
 
@@ -33,23 +40,31 @@ int main()
             cin >> nums[i];
         }
 
-        deque<int> ans;
+        long long damage = 0;
 
         for (int i = 0; i < n; ++i)
         {
-            if (ans.empty() || ans[0] < nums[i])
+            damage += power[i] * (int64_t(nums[i] + attack - 1) / attack);
+        }
+
+        bool flag = false;
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (init - (damage - power[i]) > 0)
             {
-                ans.push_back(nums[i]);
-            }
-            else if (ans[0] > nums[i])
-            {
-                ans.push_front(nums[i]);
+                flag = true;
+                break;
             }
         }
 
-        for (int i = 0; i < ans.size(); ++i)
+        if (flag == true)
         {
-            cout << ans[i] << " ";
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
         }
 
         cout << endl;

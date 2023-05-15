@@ -5,12 +5,12 @@
 #include <math.h>
 #include <numeric> // std::accumulate
 #include <set>
-#include <stack>
 #include <stdio.h>
 #include <string.h>
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -26,26 +26,24 @@ int main()
 
         cin >> n;
 
-        vector<int> nums(n, 0);
-
-        for (int i = 0; i < n; ++i)
+        if (n % 2 == 1)
         {
-            cin >> nums[i];
+            for (int i = 1; i <= n; ++i)
+            {
+                cout << 1 << " ";
+            }
         }
-
-        int ans = 0;
-
-        for (int i = 0; i < n; ++i)
+        else
         {
-            ans = gcd(ans, abs(nums[i] - (i + 1)));
+            cout << 1 << " " << 3 << " ";
+
+            for (int i = 3; i <= n; ++i)
+            {
+                cout << 2 << " ";
+            }
         }
-
-        cout << ans;
-
         cout << endl;
     }
 
     return 0;
 }
-
-// 2 1 4 3
