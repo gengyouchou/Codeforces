@@ -33,28 +33,29 @@ int main()
             cin >> nums[i];
         }
 
+        long long count = 0;
+
+        for (int i = 0; i < n; ++i)
+        {
+            while (nums[i] % 2 == 0)
+            {
+                ++count;
+                nums[i] /= 2;
+            }
+        }
+
+        auto mxptr = max_element(nums.begin(), nums.end());
+
         long long ans = 0;
 
-        for (int pos = 0; pos < n; ++pos)
+        while (count--)
         {
+            *mxptr = *mxptr * 2;
+        }
 
-            vector<long long> temp = nums;
-            int i = 0;
-
-            while (i < n)
-            {
-                if (i != pos && temp[i] % 2 == 0)
-                {
-                    temp[i] = temp[i] / 2;
-                    temp[pos] = temp[pos] * 2;
-                }
-                else
-                {
-                    ++i;
-                }
-            }
-
-            ans = max(ans, accumulate(temp.begin(), temp.end(), 0ll));
+        for (long long &num : nums)
+        {
+            ans += num;
         }
 
         cout << ans;
