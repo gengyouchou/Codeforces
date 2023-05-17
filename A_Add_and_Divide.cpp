@@ -14,20 +14,6 @@
 
 using namespace std;
 
-bool tooLess(int m, int p, int mid)
-{
-
-    if (p < mid || m < mid)
-    {
-        return false;
-    }
-    m = m - mid;
-
-    p = p - mid;
-
-    return m + p >= 2 * mid;
-}
-
 int main()
 {
     int t;
@@ -35,27 +21,27 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
+        long long a = 0, b = 0;
 
-        int m = 0, p = 0;
+        cin >> a >> b;
 
-        cin >> m >> p;
+        long long ans = INT_MAX;
 
-        int l = 0, r = m + p;
-
-        while (l < r)
+        for (long long cur = b < 2 ? 2 - b : 0; cur < INT_MAX; ++cur)
         {
-            int mid = r - (r - l) / 2;
+            long long count = 0;
+            long long bb = b + cur, aa = a;
 
-            if (tooLess(m, p, mid))
+            while (aa > 0)
             {
-                l = mid;
+                aa = aa / bb;
+                ++count;
             }
-            else
-            {
-                r = mid - 1;
-            }
+
+            ans = min(ans, count + cur);
         }
-        cout << l;
+
+        cout << ans;
 
         cout << endl;
     }
