@@ -21,27 +21,19 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
-        long long a = 0, b = 0;
 
-        cin >> a >> b;
+        string s = "";
+        cin >> s;
 
-        long long ans = INT_MAX;
-
-        for (long long cur = b < 2 ? 2 - b : 0; cur <= 30; ++cur)
+        sort(s.begin(), s.end());
+        if (s[0] == s[s.size() - 1])
         {
-            long long count = 0;
-            long long bb = b + cur, aa = a;
-
-            while (aa > 0)
-            {
-                aa = aa / bb;
-                ++count;
-            }
-
-            ans = min(ans, count + cur);
+            cout << -1;
         }
-
-        cout << ans;
+        else
+        {
+            cout << s;
+        }
 
         cout << endl;
     }

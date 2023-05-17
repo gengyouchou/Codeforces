@@ -21,27 +21,17 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
-        long long a = 0, b = 0;
 
-        cin >> a >> b;
+        unordered_map<char, int> m;
 
-        long long ans = INT_MAX;
-
-        for (long long cur = b < 2 ? 2 - b : 0; cur <= 30; ++cur)
+        for (int i = 0; i < 4; ++i)
         {
-            long long count = 0;
-            long long bb = b + cur, aa = a;
-
-            while (aa > 0)
-            {
-                aa = aa / bb;
-                ++count;
-            }
-
-            ans = min(ans, count + cur);
+            char cur = 0;
+            cin >> cur;
+            ++m[cur];
         }
 
-        cout << ans;
+        cout << m.size() - 1;
 
         cout << endl;
     }
