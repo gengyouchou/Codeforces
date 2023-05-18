@@ -21,15 +21,30 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
+        string s = "";
 
-        int target = 0;
+        cin >> s;
 
-        cin >> target;
+        unordered_map<char, int> m;
 
-        int count = target / 2;
+        int count = 0;
+        for (char &c : s)
+        {
+            if (m.size() >= 3 && !m.count(c))
+            {
+                ++count;
+                m.clear();
+            }
+
+            m[c] = 1;
+        }
+
+        if (m.size() != 0)
+        {
+            ++count;
+        }
 
         cout << count;
-
         cout << endl;
     }
 

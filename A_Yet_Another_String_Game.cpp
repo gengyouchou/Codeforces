@@ -21,14 +21,26 @@ int main()
 
     for (int c = 0; c < t; ++c)
     {
+        string s = "";
 
-        int target = 0;
+        cin >> s;
 
-        cin >> target;
+        // Alice can makes a move either a or b
+        // Bob can makes a move either z or y
 
-        int count = target / 2;
+        for (int i = 0; i < s.size(); ++i)
+        {
+            if (i % 2 == 0)
+            {
+                s[i] = (s[i] == 'a' ? 'b' : 'a');
+            }
+            else
+            {
+                s[i] = (s[i] == 'z' ? 'y' : 'z');
+            }
+        }
 
-        cout << count;
+        cout << s;
 
         cout << endl;
     }

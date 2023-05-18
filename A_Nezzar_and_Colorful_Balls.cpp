@@ -22,24 +22,36 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        vector<int> mat(4, 0);
+        int n = 0;
 
-        for (int i = 0; i < 4; ++i)
+        cin >> n;
+
+        vector<int> nums(n, 0);
+
+        for (int i = 0; i < n; ++i)
         {
-            cin >> mat[i];
+            cin >> nums[i];
         }
 
-        int mxpos = max_element(mat.begin(), mat.end()) - mat.begin();
-        int mnpos = min_element(mat.begin(), mat.end()) - mat.begin();
+        int cur = 1;
+        int ans = 0;
 
-        if (mxpos + mnpos == 3)
+        for (int i = 0; i + 1 < n; ++i)
         {
-            cout << "YES";
+            if (nums[i] == nums[i + 1])
+            {
+                ++cur;
+            }
+            else
+            {
+                ans = max(ans, cur);
+                cur = 1;
+            }
         }
-        else
-        {
-            cout << "NO";
-        }
+
+        ans = max(ans, cur);
+
+        cout << ans;
 
         cout << endl;
     }
