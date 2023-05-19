@@ -29,17 +29,52 @@ int main()
             cin >> nums[i];
         }
 
-        int cur = 0;
+        int count = 0;
 
         for (int i = 0; i < 3; ++i)
         {
-
+            if (nums[i] > 0)
+            {
+                --nums[i];
+                ++count;
+            }
         }
 
-        cout << cur;
+        sort(nums.rbegin(), nums.rend());
 
-        cout << endl;
+        if (nums[0] > 0 && nums[1] > 0)
+        {
+            --nums[0];
+            --nums[1];
+            ++count;
+        }
+
+        if (nums[0] > 0 && nums[2] > 0)
+        {
+            --nums[0];
+            --nums[2];
+            ++count;
+        }
+        if (nums[1] > 0 && nums[2] > 0)
+        {
+            --nums[1];
+            --nums[2];
+            ++count;
+        }
+        if (nums[0] > 0 && nums[1] > 0 && nums[2] > 0)
+        {
+            ++count;
+        }
+
+        cout << count << endl;
     }
 
     return 0;
 }
+
+// 3 2 2
+
+// 1 1 1
+
+// 1 1
+// 1   1
