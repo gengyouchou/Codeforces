@@ -10,6 +10,7 @@
 #include <string.h>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 using namespace std;
@@ -22,21 +23,23 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        vector<int> nums(3, 0);
+        int n = 0;
 
-        for (int i = 0; i < 3; ++i)
+        cin >> n;
+
+        string s = "";
+
+        cin >> s;
+
+        set<string> se;
+
+        for (int i = 0; i + 1 < s.size(); ++i)
         {
-            cin >> nums[i];
+            string t = s.substr(i, 2);
+            se.insert(t);
         }
 
-        int cur = 0;
-
-        for (int i = 0; i < 3; ++i)
-        {
-
-        }
-
-        cout << cur;
+        cout << se.size();
 
         cout << endl;
     }
