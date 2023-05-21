@@ -33,37 +33,47 @@ int main()
             cin >> nums[i];
         }
 
-        int right = max_element(nums.begin() + 1, nums.end()) - nums.begin();
-
-        cout << "right: " << right << endl;
-
-        int left = 0;
-
-        if(right-1>=0 && nums[right-1]>nums[0]){
-            left = max_element(nums.begin(), nums.begin() + right)-nums.begin();
-        }else{
-            left = 0;
-        }
-
-    
-
-        cout << "left: " << left << endl;
-
-        for (int i = right; i < n; ++i)
+        int r = 0;
+        for (int i = 0; i < n; ++i)
         {
-            cout << nums[i] << " ";
+            if (nums[min(n - 1, r + 1)] <= nums[min(n - 1, i + 1)])
+            {
+                r = i;
+            }
         }
 
-        for (int i = left; i <right; ++i)
+        // cout << "right: " << r << endl;
+
+        vector<int> ans;
+
+        for (int i = r + 1; i < n; ++i)
         {
-            cout << nums[i] << " ";
+            ans.emplace_back(nums[i]);
         }
 
-        for (int i = 0; i < left; ++i)
+        ans.emplace_back(nums[r]);
+
+        for (int i = r - 1; i >= 0; --i)
         {
-            cout << nums[i] << " ";
+            if (nums[i] > nums[0])
+            {
+                ans.emplace_back(nums[i]);
+            }
+            else
+            {
+                for (int k = 0; k <= i; ++k)
+                {
+                    ans.emplace_back(nums[k]);
+                }
+
+                break;
+            }
         }
 
+        for (int i = 0; i < n; ++i)
+        {
+            cout << ans[i] << " ";
+        }
         cout << endl;
     }
 
