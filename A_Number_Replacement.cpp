@@ -14,6 +14,41 @@
 
 using namespace std;
 
+bool solve()
+{
+    int n = 0;
+
+    cin >> n;
+
+    vector<int> nums(n, 0);
+
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> nums[i];
+    }
+
+    string s = "";
+
+    cin >> s;
+
+    for (int i = 0; i < n; ++i)
+    {
+
+        for (int j = i + 1; j < n; ++j)
+        {
+            if (nums[i] == nums[j])
+            {
+                if (s[i] != s[j])
+                {
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
+}
+
 int main()
 {
     int t;
@@ -22,48 +57,13 @@ int main()
     for (int c = 0; c < t; ++c)
     {
 
-        int n = 0;
-
-        cin >> n;
-
-        vector<int> nums(n, 0);
-
-        for (int i = 0; i < n; ++i)
+        if (solve())
         {
-            cin >> nums[i];
-        }
-
-        string s = "";
-
-        cin >> s;
-
-        map<int, int> m1, m2;
-
-        for (int i = 0; i < n; ++i)
-        {
-            ++m1[nums[i]];
-            ++m2[s[i]];
-        }
-
-        int m1x = 0, m2x = 0;
-
-        for (auto [val, freq] : m1)
-        {
-            m1x = max(m1x, freq);
-        }
-
-        for (auto [val, freq] : m2)
-        {
-            m2x = max(m2x, freq);
-        }
-
-        if (m1x < m2x && m1.size() <= m2.size())
-        {
-            cout << "NO";
+            cout << "YES";
         }
         else
         {
-            cout << "YES";
+            cout << "NO";
         }
 
         cout << endl;
