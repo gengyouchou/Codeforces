@@ -13,7 +13,6 @@
 #include <stack>
 #include <queue>
 
-
 using namespace std;
 
 int main()
@@ -34,6 +33,25 @@ int main()
         {
             cin >> nums[i];
         }
+
+        priority_queue<int> pq;
+
+        long long sum = 0;
+
+        for (int &num : nums)
+        {
+            if (num > 0)
+            {
+                pq.push(num);
+            }
+            else if (!pq.empty())
+            {
+                sum += pq.top();
+                pq.pop();
+            }
+        }
+
+        cout << sum;
 
         cout << endl;
     }
