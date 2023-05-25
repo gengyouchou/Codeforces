@@ -5,6 +5,12 @@
 #include <set>
 #include <map>
 #include <array>
+#include <stack>
+#include <queue>
+#include <vector>
+#include <numeric>
+#include <iostream>
+#include <algorithm>
 #include <algorithm>
 #include <functional> // std::minus
 #include <iostream>
@@ -41,6 +47,32 @@ bool solve()
     for (auto &x : vec)
     {
         cin >> x;
+    }
+
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            if (vec[i][j] == '.')
+            {
+                if (j - 1 < 0 || j + 1 >= n || i + 1 >= n || i + 2 >= n)
+                {
+                    return false;
+                }
+
+                if (vec[i + 1][j - 1] == '.' && vec[i + 1][j] == '.' && vec[i + 1][j + 1] == '.' && vec[i + 2][j] == '.')
+                {
+                    vec[i + 1][j - 1] = '#';
+                    vec[i + 1][j] = '#';
+                    vec[i + 1][j + 1] = '#';
+                    vec[i + 2][j] = '#';
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 
     return true;

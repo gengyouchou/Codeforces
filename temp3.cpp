@@ -18,25 +18,19 @@ using namespace std;
 
 int main()
 {
-    int t;
-    cin >> t;
 
-    for (int c = 0; c < t; ++c)
+    int n = 0;
+
+    cin >> n;
+
+    vector<int> nums(n, 0);
+
+    for (int i = 0; i < n; ++i)
     {
-
-        int n = 0;
-
-        cin >> n;
-
-        vector<int> nums(n, 0);
-
-        for (int i = 0; i < n; ++i)
-        {
-            cin >> nums[i];
-        }
-
-        cout << endl;
+        cin >> nums[i];
     }
+
+    cout << endl;
 
     return 0;
 }

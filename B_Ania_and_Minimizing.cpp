@@ -33,17 +33,43 @@ typedef vector<int> vi;
 #define S second
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-bool solve()
+void solve()
 {
-    int n;
-    cin >> n;
-    vector<string> vec(n);
-    for (auto &x : vec)
+    int n, k;
+    cin >> n >> k;
+
+    string s;
+
+    cin >> s;
+
+    int i = 0;
+
+    while (i < n && k > 0)
     {
-        cin >> x;
+        if (s[i] >= '1')
+        {
+
+            if (n > 1 && i == 0 && s[i] > '1')
+            {
+                s[i] = '1';
+                --k;
+            }
+            else if (n == 1)
+            {
+                s[i] = '0';
+                --k;
+            }
+            else if (i > 0)
+            {
+                s[i] = '0';
+                --k;
+            }
+        }
+
+        ++i;
     }
 
-    return true;
+    cout << s;
 }
 
 int main()
@@ -52,14 +78,7 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    if (solve())
-    {
-        cout << "YES";
-    }
-    else
-    {
-        cout << "NO";
-    }
+    solve();
 
     cout << endl;
 }

@@ -18,25 +18,35 @@ using namespace std;
 
 int main()
 {
-    int t;
-    cin >> t;
 
-    for (int c = 0; c < t; ++c)
+    int n = 0, k = 0;
+
+    cin >> n >> k;
+
+    vector<int> nums(n, 0);
+
+    for (int i = 0; i < n; ++i)
     {
-
-        int n = 0;
-
-        cin >> n;
-
-        vector<int> nums(n, 0);
-
-        for (int i = 0; i < n; ++i)
-        {
-            cin >> nums[i];
-        }
-
-        cout << endl;
+        cin >> nums[i];
     }
+
+    int count = 0;
+
+    for (int i = 1; i < n; ++i)
+    {
+        int diff = nums[i - 1] - nums[i];
+
+        if (diff >= 0)
+        {
+            int add = (diff + k) / k;
+            count += add;
+            nums[i] = nums[i] + add * k;
+        }
+    }
+
+    cout << count;
+
+    cout << endl;
 
     return 0;
 }
