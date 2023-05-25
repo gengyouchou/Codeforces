@@ -22,42 +22,28 @@ int main()
 
     cin >> n;
 
-    vector<int> nums(n, 0);
+    vector<int> nums(n + 1, 0);
 
-    for (int i = 0; i < n; ++i)
+    for (int i = 1; i <= n; ++i)
     {
         cin >> nums[i];
     }
 
-    int steps = n / 2;
-    int cur = n % 2 == 0 ? 2 : 1;
+    int i = 1, j = n;
 
-    int len = n % 2 == 0 ? 2 : 1;
-
-    while (len <= n)
+    while (i < j)
     {
 
-        int left = (n - len) / 2;
-        int right = left + len - 1;
-
-        if (steps % 2 != cur % 2)
+        if (i % 2 != 0)
         {
-            swap(nums[left], nums[right]);
+            swap(nums[i], nums[j]);
         }
 
-        // reverse(nums.begin() + left, nums.begin() + right);
-
-        // for (int i = 0; i < n; ++i)
-        // {
-        //     cout << nums[i] << " ";
-        // }
-
-        // cout << endl;
-        len += 2;
-        ++cur;
+        ++i;
+        --j;
     }
 
-    for (int i = 0; i < n; ++i)
+    for (int i = 1; i <= n; ++i)
     {
         cout << nums[i] << " ";
     }
