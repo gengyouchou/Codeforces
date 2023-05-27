@@ -1,25 +1,23 @@
-#include <cstring>
-#include <cstdio>
-#include <cmath>
-#include <cassert>
-#include <set>
-#include <map>
-#include <array>
 #include <algorithm>
+#include <array>
+#include <cassert>
+#include <cmath>
+#include <cstdio>
+#include <cstring>
 #include <functional> // std::minus
 #include <iostream>
 #include <map>
 #include <math.h>
 #include <numeric> // std::accumulate
+#include <queue>
 #include <set>
+#include <stack>
 #include <stdio.h>
 #include <string.h>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <stack>
-#include <queue>
 
 using namespace std;
 
@@ -52,14 +50,22 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    if (solve())
-    {
-        cout << "YES";
-    }
-    else
-    {
-        cout << "NO";
-    }
+    int t = 0;
 
-    cout << endl;
+    cin >> t;
+
+    for (int i = 0; i < t; ++i)
+    {
+
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
+
+        cout << endl;
+    }
 }
