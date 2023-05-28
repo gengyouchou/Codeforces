@@ -33,13 +33,31 @@ typedef vector<int> vi;
 
 bool solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int x, y;
+    cin >> x >> y;
+
+    int r = 0;
+
+    int d = x * x + y * y;
+
+    while (r * r < d)
     {
-        cin >> x;
+        ++r;
     }
+
+    int ans = 2;
+
+    if (r * r == d)
+    {
+        ans = 1;
+    }
+
+    if (x == 0 && y == 0)
+    {
+        ans = 0;
+    }
+
+    cout << ans;
 
     return true;
 }
@@ -56,9 +74,7 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-
         solve();
-
         cout << endl;
     }
 }

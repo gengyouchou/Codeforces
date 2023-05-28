@@ -33,12 +33,25 @@ typedef vector<int> vi;
 
 bool solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int n, k;
+    cin >> n >> k;
+
+    if (k > (n + 1) / 2)
     {
-        cin >> x;
+        cout << -1 << endl;
+        return false;
+    }
+
+    vector<string> vec(n, string(n, '.'));
+
+    for (int i = 0; i < k; ++i)
+    {
+        vec[2 * i][2 * i] = 'R';
+    }
+
+    for (int i = 0; i < n; ++i)
+    {
+        cout << vec[i] << endl;
     }
 
     return true;
@@ -56,9 +69,6 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-
         solve();
-
-        cout << endl;
     }
 }
