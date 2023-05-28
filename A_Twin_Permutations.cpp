@@ -41,6 +41,11 @@ bool solve()
         cin >> x;
     }
 
+    for (int i = 0; i < n; ++i)
+    {
+        cout << n - vec[i] + 1 << " ";
+    }
+
     return true;
 }
 
@@ -57,14 +62,7 @@ int main()
     for (int i = 0; i < t; ++i)
     {
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        solve();
 
         cout << endl;
     }

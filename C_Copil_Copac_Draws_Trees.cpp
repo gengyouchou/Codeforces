@@ -35,11 +35,51 @@ bool solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    vector<vector<int>> edges(n, vector<int>(2, 0));
+    for (auto &e : edges)
     {
-        cin >> x;
+        cin >> e[0] >> e[1];
     }
+
+    vector<vector<pair<int, int>>> graph(n, vector<pair<int, int>>());
+
+    int idx = 1;
+
+    for (auto &e : edges)
+    {
+        graph[e[0]].push_back({e[1], idx});
+        graph[e[1]].push_back({e[0], idx});
+
+        ++idx;
+    }
+
+    int count = 1;
+
+    vector<bool> visited(n, false);
+
+    visited[1] = true;
+
+    int steps = 0;
+
+    queue<int> q;
+
+    while (!q.empty())
+    {
+
+        int len = q.size();
+
+        for (int l = 0; l < len; ++l)
+        {
+
+            int cur = q.front();
+            q.pop();
+            for(auto vec: graph[cur]){
+                if(vec.second<)
+            }
+        }
+    }
+
+    cout << steps + 1;
 
     return true;
 }
@@ -57,15 +97,22 @@ int main()
     for (int i = 0; i < t; ++i)
     {
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        solve();
 
         cout << endl;
     }
 }
+
+// 4 5
+// 1 3
+// 1 2
+// 3 4
+// 1 6
+
+// 1 3
+// 1 2
+// 1 6
+// 3 4
+// 4 5
+
+//fail
