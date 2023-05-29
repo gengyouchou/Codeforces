@@ -27,10 +27,27 @@ bool solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    if (n == 2)
     {
-        cin >> x;
+        cout << 2 << " " << 1;
+        return false;
+    }
+
+    if (n == 3)
+    {
+        cout << -1;
+        return false;
+    }
+
+    for (int i = n - 1; i <= n; ++i)
+    {
+        cout << i << " ";
+    }
+
+    for (int i = 1; i < n - 1; ++i)
+    {
+        cout << i << " ";
     }
 
     return true;
@@ -49,14 +66,7 @@ int main()
     for (int i = 0; i < t; ++i)
     {
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        solve();
 
         cout << endl;
     }

@@ -25,13 +25,49 @@ using namespace std;
 
 bool solve()
 {
-    int n;
-    cin >> n;
+    int n, b, p;
+    cin >> n >> b >> p;
+
     vector<int> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
+
+    int count = 0;
+
+    for (auto &cur : vec)
+    {
+
+        if (cur == 2)
+        {
+            if (p > 0)
+            {
+                --p;
+            }
+            else if (b > 0)
+            {
+                --b;
+            }
+            else
+            {
+                ++count;
+            }
+        }
+        else
+        {
+            if (b > 0)
+            {
+                --b;
+            }
+            else
+            {
+                ++count;
+            }
+        }
+    }
+
+    cout << count;
 
     return true;
 }
@@ -42,22 +78,7 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
-
-    for (int i = 0; i < t; ++i)
-    {
-
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
-
-        cout << endl;
-    }
+    cout << endl;
 }

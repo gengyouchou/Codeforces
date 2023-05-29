@@ -27,10 +27,31 @@ bool solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    if (n > 1 && n % 2 == 1)
     {
-        cin >> x;
+
+        // n*(n+1)/2 is divisible by n
+
+        cout << -1;
+        return false;
+    }
+
+    vector<int> vec;
+
+    for (int i = 1; i <= n; ++i)
+    {
+        vec.push_back(i);
+    }
+
+    for (int i = 0; i + 1 < n; i += 2)
+    {
+        swap(vec[i], vec[i + 1]);
+    }
+
+    for (int i = 0; i < vec.size(); ++i)
+    {
+        cout << vec[i] << " ";
     }
 
     return true;
@@ -49,14 +70,7 @@ int main()
     for (int i = 0; i < t; ++i)
     {
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        solve();
 
         cout << endl;
     }

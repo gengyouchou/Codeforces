@@ -23,14 +23,43 @@ using namespace std;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
+bool isPalindrome(string &s)
+{
+    int i = 0;
+    int j = s.size() - 1;
+
+    while (i < j)
+    {
+        if (s[i] != s[j])
+        {
+            return false;
+        }
+
+        ++i;
+        --j;
+    }
+
+    return true;
+}
+
 bool solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int n, k;
+    cin >> n >> k;
+
+    string s;
+
+    cin >> s;
+
+    // final len equal to n*2^k;
+
+    if (k == 0 || isPalindrome(s))
     {
-        cin >> x;
+        cout << 1;
+    }
+    else
+    {
+        cout << 2;
     }
 
     return true;
@@ -49,15 +78,11 @@ int main()
     for (int i = 0; i < t; ++i)
     {
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        solve();
 
         cout << endl;
     }
 }
+
+// replace the string s with s+rev(s)
+// replace the string s with rev(s)+s

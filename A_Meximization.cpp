@@ -41,6 +41,35 @@ bool solve()
         cin >> x;
     }
 
+    map<int, int> m;
+
+    for (auto &x : vec)
+    {
+        ++m[x];
+    }
+
+    int len = 0;
+
+    vector<int> ans;
+
+    while (len < n)
+    {
+        for (auto [val, freq] : m)
+        {
+            if (freq > 0)
+            {
+                ans.push_back(val);
+                --m[val];
+                ++len;
+            }
+        }
+    }
+
+    for (auto &x : ans)
+    {
+        cout << x << " ";
+    }
+
     return true;
 }
 

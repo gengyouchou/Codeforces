@@ -33,6 +33,37 @@ bool solve()
         cin >> x;
     }
 
+    vector<long long> prefix(n, 0), suffix(n, 0);
+
+    long long cur = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        cur += (vec[i] == 2);
+        prefix[i] = cur;
+    }
+
+    cur = 0;
+
+    for (int i = n - 1; i >= 0; --i)
+    {
+        cur += (vec[i] == 2);
+        suffix[i] = cur;
+    }
+
+    int ans = -1;
+
+    for (int i = 0; i + 1 < n; ++i)
+    {
+        if (prefix[i] == suffix[i + 1])
+        {
+            ans = i + 1;
+            break;
+        }
+    }
+
+    cout << ans;
+
     return true;
 }
 
@@ -49,14 +80,21 @@ int main()
     for (int i = 0; i < t; ++i)
     {
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (t == 100 && i == 60)
+        // {
+        //     int n;
+        //     cin >> n;
+        //     vector<int> vec(n);
+        //     for (auto &x : vec)
+        //     {
+        //         cin >> x;
+        //         cout << x << " ";
+        //     }
+
+        //     cout << endl;
+        // }
+
+        solve();
 
         cout << endl;
     }
