@@ -25,38 +25,41 @@ using namespace std;
 
 void solve()
 {
-    string s;
+    int n, k;
+    cin >> n >> k;
 
-    cin >> s;
+    if (k != 1 && n % 2 == 1)
+    {
+        cout << "NO";
+        return;
+    }
 
-    s = s + "#";
+    cout << "YES" << endl;
 
-    int n = s.size();
-
-    vector<int> m(26, 0);
-
-    int count = 0;
+    int l = 1,
+        r = 2;
 
     for (int i = 0; i < n; ++i)
     {
-        if (i != 0 && s[i] != s[i - 1] && count % 2 == 1)
+
+        if (i % 2 == 0)
         {
-            m[s[i - 1] - 'a'] = 1;
-            count = 1;
+            for (int j = 0; j < k; ++j)
+            {
+                cout << l << " ";
+                l += 2;
+            }
         }
         else
         {
-            ++count;
+            for (int j = 0; j < k; ++j)
+            {
+                cout << r << " ";
+                r += 2;
+            }
         }
-    }
 
-    for (int i = 0; i < 26; ++i)
-    {
-        if (m[i] == 1)
-        {
-            char c = 'a' + i;
-            cout << c;
-        }
+        cout << endl;
     }
 }
 
@@ -86,3 +89,7 @@ int main()
         cout << endl;
     }
 }
+
+// 1  3 5 7 9
+// 2  4 6 8 10
+// 11
