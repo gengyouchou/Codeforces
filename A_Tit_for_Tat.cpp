@@ -27,23 +27,31 @@ void solve()
 {
     int n, k;
     cin >> n >> k;
-
-    int cur = 0;
-    int len = 0;
-
-    while (len < n)
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        if (len % 2 == 0)
+        cin >> x;
+    }
+
+    int i = 0, j = n - 1;
+
+    while (i < j && k > 0)
+    {
+        if (vec[i] > 0)
         {
-            cout << n - cur << " ";
+            --vec[i];
+            ++vec[j];
+            --k;
         }
         else
         {
-            ++cur;
-            cout << cur << " ";
+            ++i;
         }
+    }
 
-        ++len;
+    for (int i = 0; i < n; ++i)
+    {
+        cout << vec[i] << " ";
     }
 }
 
@@ -60,16 +68,6 @@ int main()
     for (int i = 0; i < t; ++i)
     {
         solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
         cout << endl;
     }
 }

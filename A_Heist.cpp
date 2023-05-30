@@ -25,26 +25,30 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-
-    int cur = 0;
-    int len = 0;
-
-    while (len < n)
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        if (len % 2 == 0)
+        cin >> x;
+    }
+
+    sort(vec.begin(), vec.end());
+
+    long long count = 0;
+    int pre = -1;
+
+    for (int i = n - 1; i >= 0; --i)
+    {
+        if (i != n - 1 && pre != vec[i] + 1)
         {
-            cout << n - cur << " ";
-        }
-        else
-        {
-            ++cur;
-            cout << cur << " ";
+            count += pre - 1 - vec[i];
         }
 
-        ++len;
+        pre = vec[i];
     }
+
+    cout << count;
 }
 
 int main()
@@ -53,23 +57,6 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
-
-    cin >> t;
-
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    solve();
+    cout << endl;
 }

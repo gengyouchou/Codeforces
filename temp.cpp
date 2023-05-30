@@ -23,7 +23,7 @@ using namespace std;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-bool solve()
+void solve()
 {
     int n;
     cin >> n;
@@ -32,8 +32,6 @@ bool solve()
     {
         cin >> x;
     }
-
-    return true;
 }
 
 int main()
@@ -48,15 +46,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
+        solve();
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }

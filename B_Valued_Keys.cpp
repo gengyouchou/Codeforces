@@ -25,25 +25,30 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    string x, output;
 
-    int cur = 0;
-    int len = 0;
+    cin >> x >> output;
 
-    while (len < n)
+    int n = x.size();
+
+    string ans = "";
+
+    for (int i = 0; i < n; ++i)
     {
-        if (len % 2 == 0)
+        if (x[i] >= output[i])
         {
-            cout << n - cur << " ";
+            ans.insert(ans.end(), output[i]);
         }
-        else
+        else if (x[i] < output[i])
         {
-            ++cur;
-            cout << cur << " ";
+            cout << -1;
+            return;
         }
+    }
 
-        ++len;
+    for (char &c : ans)
+    {
+        cout << c;
     }
 }
 
@@ -53,23 +58,23 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    // int t = 0;
 
-    cin >> t;
+    // cin >> t;
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
+    // for (int i = 0; i < t; ++i)
+    // {
+    solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-        cout << endl;
-    }
+    cout << endl;
+    //}
 }

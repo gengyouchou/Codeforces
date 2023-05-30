@@ -25,26 +25,11 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    string s;
 
-    int cur = 0;
-    int len = 0;
+    cin >> s;
 
-    while (len < n)
-    {
-        if (len % 2 == 0)
-        {
-            cout << n - cur << " ";
-        }
-        else
-        {
-            ++cur;
-            cout << cur << " ";
-        }
-
-        ++len;
-    }
+    
 }
 
 int main()

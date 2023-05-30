@@ -25,25 +25,43 @@ using namespace std;
 
 void solve()
 {
-    int n, k;
+    int n = 0, k = 0;
     cin >> n >> k;
 
-    int cur = 0;
-    int len = 0;
+    string s = "";
 
-    while (len < n)
+    cin >> s;
+
+    map<char, int> m;
+
+    for (char &c : s)
     {
-        if (len % 2 == 0)
+        ++m[c];
+    }
+
+    int kk = k;
+
+    while (k > 0)
+    {
+        int step = n / kk;
+        char cur = 'a' + step;
+
+        for (int i = 0; i < step; ++i)
         {
-            cout << n - cur << " ";
-        }
-        else
-        {
-            ++cur;
-            cout << cur << " ";
+            if (m.count('a' + i) && m['a' + i] > 0)
+            {
+                --m['a' + i];
+            }
+            else
+            {
+                cur = 'a' + i;
+                break;
+            }
         }
 
-        ++len;
+        cout << cur;
+
+        --k;
     }
 }
 

@@ -23,28 +23,32 @@ using namespace std;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-void solve()
+bool solve()
 {
-    int n, k;
-    cin >> n >> k;
+    string s;
 
-    int cur = 0;
-    int len = 0;
+    cin >> s;
 
-    while (len < n)
+    int i = 0, j = s.size() - 1;
+
+    while (i < j)
     {
-        if (len % 2 == 0)
+        if (s[i] == s[j])
         {
-            cout << n - cur << " ";
+            ++i;
+            --j;
+        }
+        else if (i == 0 && s[j] == '0')
+        {
+            --j;
         }
         else
         {
-            ++cur;
-            cout << cur << " ";
+            return false;
         }
-
-        ++len;
     }
+
+    return true;
 }
 
 int main()
@@ -53,23 +57,23 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    // int t = 0;
 
-    cin >> t;
+    // cin >> t;
 
-    for (int i = 0; i < t; ++i)
+    // for (int i = 0; i < t; ++i)
+    // {
+    // solve();
+
+    if (solve())
     {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
+        cout << "YES";
     }
+    else
+    {
+        cout << "NO";
+    }
+
+    cout << endl;
+    //}
 }
