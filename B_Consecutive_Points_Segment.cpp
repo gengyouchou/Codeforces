@@ -23,7 +23,7 @@ using namespace std;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-void solve()
+bool solve()
 {
     int n;
     cin >> n;
@@ -35,17 +35,29 @@ void solve()
 
     int count = 0;
 
-    for (int i = 1; i + 1 < n; ++i)
+    for (int i = 1; i < n; ++i)
     {
-        if (vec[i] == 0 && vec[i - 1] == 1 && vec[i + 1] == 1)
-        {
-            vec[i + 1] = 0;
-            ++count;
-        }
+        count += vec[i] - vec[i - 1];
     }
 
-    cout << count;
+    return count <= n + 1;
 }
+
+// x 2 x 3   x 1 x
+
+// x 3 x 3 x
+
+// x 2 x 0 x 1 x 1 x 2 x 0
+
+// 0 1 2
+
+// 1 4 5 6 7
+//  3 1 1 1
+// 2 4 5 6 6
+
+// 1 2 3 7
+//  1 1 4
+//
 
 int main()
 {
@@ -53,23 +65,23 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    // int t = 0;
+    int t = 0;
 
-    // cin >> t;
+    cin >> t;
 
-    // for (int i = 0; i < t; ++i)
-    // {
-    solve();
+    for (int i = 0; i < t; ++i)
+    {
+        // solve();
 
-    // if (solve())
-    // {
-    //     cout << "YES";
-    // }
-    // else
-    // {
-    //     cout << "NO";
-    // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
-    cout << endl;
-    // }
+        cout << endl;
+    }
 }

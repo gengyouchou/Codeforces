@@ -33,19 +33,46 @@ void solve()
         cin >> x;
     }
 
-    int count = 0;
-
-    for (int i = 1; i + 1 < n; ++i)
+    if (n % 2 == 1)
     {
-        if (vec[i] == 0 && vec[i - 1] == 1 && vec[i + 1] == 1)
+        cout << "Mike";
+        return;
+    }
+
+    int smallest = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        if (vec[i] < vec[smallest])
         {
-            vec[i + 1] = 0;
-            ++count;
+            smallest = i;
         }
     }
 
-    cout << count;
+    if (smallest % 2 == 0)
+    {
+        cout << "Joe";
+    }
+    else
+    {
+        cout << "Mike";
+    }
 }
+
+// 1 1 1 2
+// j m j m
+
+// 1 2 3
+// m j m
+// j
+
+// 1 2 3 4
+// m j m j
+// m j m j
+
+// 1 2 3 4
+// j m j m
+// j m j m
 
 int main()
 {
@@ -53,23 +80,23 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    // int t = 0;
+    int t = 0;
 
-    // cin >> t;
+    cin >> t;
 
-    // for (int i = 0; i < t; ++i)
-    // {
-    solve();
+    for (int i = 0; i < t; ++i)
+    {
+        solve();
 
-    // if (solve())
-    // {
-    //     cout << "YES";
-    // }
-    // else
-    // {
-    //     cout << "NO";
-    // }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
-    cout << endl;
-    // }
+        cout << endl;
+    }
 }
