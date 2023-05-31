@@ -30,28 +30,43 @@ void solve()
 
     int n = s.size();
 
-    for (int len = n; len >= 1; --len)
+    bool diff = false;
+
+    for (int i = 1; i < n; ++i)
     {
-        for (int i = 0; i < n - len + 1; ++i)
+        if (s[i] != s[i - 1])
         {
-            int j = i + len - 1;
-
-            int left = i, right = j;
-
-            while (left < right)
-            {
-                if (s[left] != s[right])
-                {
-                    cout << len;
-                    return;
-                }
-                ++left;
-                --right;
-            }
+            diff = true;
         }
     }
 
-    cout << 0;
+    bool isP = true;
+
+    int i = 0, j = n - 1;
+
+    while (i < j)
+    {
+        if (s[i] != s[j])
+        {
+            isP = false;
+            break;
+        }
+        ++i;
+        --j;
+    }
+
+    if (diff != true)
+    {
+        cout << 0;
+    }
+    else if (isP == false)
+    {
+        cout << n;
+    }
+    else
+    {
+        cout << n - 1;
+    }
 }
 
 int main()
