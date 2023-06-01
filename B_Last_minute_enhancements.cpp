@@ -33,30 +33,19 @@ void solve()
         cin >> x;
     }
 
-    sort(vec.begin(), vec.end());
+    unordered_set<int> se;
 
-    int j = 0;
-
-    for (int i = 0; i < n;)
+    for (int &x : vec)
     {
-        j = i + 1;
-        while (j < n && vec[i] == vec[j])
+        if (se.find(x) == se.end())
         {
-            ++vec[j];
-            ++j;
-        }
-
-        if (j == i + 1)
-        {
-            i = j;
+            se.insert(x);
         }
         else
         {
-            i = j - 1;
+            se.insert(x + 1);
         }
     }
-
-    unordered_set<int> se(vec.begin(), vec.end());
 
     cout << se.size();
     // 12323434
