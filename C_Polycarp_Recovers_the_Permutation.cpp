@@ -25,23 +25,23 @@ using namespace std;
 
 void solve()
 {
-    string s;
-
-    cin >> s;
-
-    int n = s.size();
-
-    string t(2 * n, 0);
-
-    for (int i = 0; i < n; ++i)
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        t[i] = s[i];
-        t[2 * n - i - 1] = s[i];
+        cin >> x;
     }
 
-    for (char &c : t)
+    if (n != vec[0] && n != vec[n - 1])
     {
-        cout << c;
+        cout << -1;
+        return;
+    }
+
+    for (int i = n - 1; i >= 0; --i)
+    {
+        cout << vec[i] << " ";
     }
 }
 

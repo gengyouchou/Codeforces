@@ -25,24 +25,28 @@ using namespace std;
 
 void solve()
 {
-    string s;
+    int n, b, x, y;
+    cin >> n >> b >> x >> y;
 
-    cin >> s;
+    long long sum = 0;
 
-    int n = s.size();
-
-    string t(2 * n, 0);
+    long long pre = 0;
 
     for (int i = 0; i < n; ++i)
     {
-        t[i] = s[i];
-        t[2 * n - i - 1] = s[i];
+        if (pre + x > b)
+        {
+            pre = pre - y;
+        }
+        else
+        {
+            pre = pre + x;
+        }
+
+        sum += pre;
     }
 
-    for (char &c : t)
-    {
-        cout << c;
-    }
+    cout << sum;
 }
 
 int main()

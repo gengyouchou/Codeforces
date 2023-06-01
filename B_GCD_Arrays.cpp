@@ -25,23 +25,49 @@ using namespace std;
 
 void solve()
 {
-    string s;
+    int l, r, k;
+    cin >> l >> r >> k;
 
-    cin >> s;
+    int len = r - l + 1;
 
-    int n = s.size();
-
-    string t(2 * n, 0);
-
-    for (int i = 0; i < n; ++i)
+    if (len == 1)
     {
-        t[i] = s[i];
-        t[2 * n - i - 1] = s[i];
+        if (l == 1)
+        {
+            cout << "NO";
+        }
+        else
+        {
+            cout << "YES";
+        }
+        return;
     }
 
-    for (char &c : t)
+    int countOdd = 0;
+
+    if (len % 2 == 0)
     {
-        cout << c;
+        countOdd = len / 2;
+    }
+    else
+    {
+        if (l % 2 == 0)
+        {
+            countOdd = len / 2;
+        }
+        else
+        {
+            countOdd = len / 2 + 1;
+        }
+    }
+
+    if (countOdd > k)
+    {
+        cout << "NO";
+    }
+    else
+    {
+        cout << "YES";
     }
 }
 

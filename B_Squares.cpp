@@ -25,24 +25,26 @@ using namespace std;
 
 void solve()
 {
-    string s;
+    int n, k;
+    cin >> n >> k;
 
-    cin >> s;
-
-    int n = s.size();
-
-    string t(2 * n, 0);
-
-    for (int i = 0; i < n; ++i)
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        t[i] = s[i];
-        t[2 * n - i - 1] = s[i];
+        cin >> x;
     }
 
-    for (char &c : t)
+    sort(vec.begin(), vec.end());
+
+    int x = n - k;
+
+    if (x < 0)
     {
-        cout << c;
+        cout << -1;
+        return;
     }
+
+    cout << vec[x] << " " << vec[x];
 }
 
 int main()
@@ -51,23 +53,23 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    // int t = 0;
 
-    cin >> t;
+    // cin >> t;
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
+    // for (int i = 0; i < t; ++i)
+    // {
+    solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-        cout << endl;
-    }
+    cout << endl;
+    // }
 }

@@ -25,24 +25,30 @@ using namespace std;
 
 void solve()
 {
-    string s;
-
-    cin >> s;
-
-    int n = s.size();
-
-    string t(2 * n, 0);
-
-    for (int i = 0; i < n; ++i)
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        t[i] = s[i];
-        t[2 * n - i - 1] = s[i];
+        cin >> x;
     }
 
-    for (char &c : t)
+    unordered_set<int> se;
+
+    for (int len = 2; len <= n; ++len)
     {
-        cout << c;
+
+        for (int i = 0; i < n - len + 1; ++i)
+        {
+            int j = i + len - 1;
+
+            int base = vec[j] - vec[i];
+
+            se.insert(base);
+        }
     }
+
+    cout << se.size();
 }
 
 int main()
