@@ -23,7 +23,7 @@ using namespace std;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-void solve()
+bool solve()
 {
     int n, k;
     cin >> n >> k;
@@ -31,7 +31,27 @@ void solve()
     string s;
     cin >> s;
 
-    
+    int j = n - 1;
+
+    for (int i = n - 1; i >= 0; --i)
+    {
+
+        j = i;
+
+        while (j >= 0 && s[j] != '.')
+        {
+            --j;
+        }
+
+        if (i - j + 1 > k)
+        {
+            return false;
+        }
+
+        i = j;
+    }
+
+    return true;
 }
 
 int main()
@@ -40,16 +60,14 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    solve();
-
-    // if (solve())
-    // {
-    //     cout << "YES";
-    // }
-    // else
-    // {
-    //     cout << "NO";
-    // }
+    if (solve())
+    {
+        cout << "YES";
+    }
+    else
+    {
+        cout << "NO";
+    }
 
     cout << endl;
 }
