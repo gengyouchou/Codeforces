@@ -23,38 +23,28 @@ using namespace std;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-bool dfs(int n, const int k)
+void solve()
 {
-    if (n == k)
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        return true;
-    }
-    if (n % 3 != 0)
-    {
-        return false;
-    }
-
-    int d = n / 3;
-
-    if (d == k || n - d == k)
-    {
-        return true;
+        cin >> x;
     }
 
-    return dfs(n - d, k) || dfs(d, k);
-}
+    int add = INT_MAX;
 
-bool solve()
-{
-    int n, k;
-    cin >> n >> k;
+    for (int i = 0; i + 1 < n; ++i)
+    {
+        add = min(add, vec[i] + vec[i + 1]);
+    }
 
-    // 6 -> 2, 4
+    int sum = accumulate(vec.begin(), vec.end(), 0);
 
-    // 27 ->  {9, 18} {9, 6, 12} {9, 6, 4, 8} {9, 6, 4, 8}
-    // 2
+    sum += 2 * (-add);
 
-    return dfs(n, k);
+    cout << sum;
 }
 
 int main()
@@ -69,16 +59,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        // solve();
+        solve();
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }

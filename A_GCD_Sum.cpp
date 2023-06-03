@@ -23,38 +23,40 @@ using namespace std;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-bool dfs(int n, const int k)
+long long gcd_sum(long long num)
 {
-    if (n == k)
-    {
-        return true;
-    }
-    if (n % 3 != 0)
-    {
-        return false;
-    }
+    long long digitSum = 0;
 
-    int d = n / 3;
+    long long temp = num;
 
-    if (d == k || n - d == k)
+    while (temp > 0)
     {
-        return true;
+        digitSum += temp % 10;
+        temp = temp / 10;
     }
 
-    return dfs(n - d, k) || dfs(d, k);
+    long long gcd = __gcd(num, digitSum);
+
+    return gcd;
 }
 
-bool solve()
+void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    long long n;
+    cin >> n;
 
-    // 6 -> 2, 4
-
-    // 27 ->  {9, 18} {9, 6, 12} {9, 6, 4, 8} {9, 6, 4, 8}
-    // 2
-
-    return dfs(n, k);
+    if (gcd_sum(n) > 1)
+    {
+        cout << n;
+    }
+    else if (gcd_sum(n + 1) > 1)
+    {
+        cout << n + 1;
+    }
+    else if (gcd_sum(n + 2) > 1)
+    {
+        cout << n + 2;
+    }
 }
 
 int main()
@@ -69,16 +71,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        // solve();
+        solve();
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }

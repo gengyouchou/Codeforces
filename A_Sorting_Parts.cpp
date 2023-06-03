@@ -23,38 +23,25 @@ using namespace std;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-bool dfs(int n, const int k)
-{
-    if (n == k)
-    {
-        return true;
-    }
-    if (n % 3 != 0)
-    {
-        return false;
-    }
-
-    int d = n / 3;
-
-    if (d == k || n - d == k)
-    {
-        return true;
-    }
-
-    return dfs(n - d, k) || dfs(d, k);
-}
-
 bool solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
+    {
+        cin >> x;
+    }
 
-    // 6 -> 2, 4
+    for (int i = 1; i < n; ++i)
+    {
+        if (vec[i] < vec[i - 1])
+        {
+            return true;
+        }
+    }
 
-    // 27 ->  {9, 18} {9, 6, 12} {9, 6, 4, 8} {9, 6, 4, 8}
-    // 2
-
-    return dfs(n, k);
+    return false;
 }
 
 int main()
@@ -83,3 +70,6 @@ int main()
         cout << endl;
     }
 }
+
+// 999999999    999999999 999999998 1000000000
+// 1000000000
