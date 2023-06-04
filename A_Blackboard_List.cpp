@@ -37,7 +37,31 @@ void solve()
     {
         cin >> x;
     }
+
+    sort(vec.rbegin(), vec.rend());
+
+    if (vec[n - 1] < 0)
+    {
+        cout << vec[n - 1];
+    }
+    else
+    {
+        cout << vec[0];
+    }
 }
+
+// 9
+
+// -10
+// 3
+// 8
+// 0
+// 27
+// 600000000
+// 0
+
+// =====
+// Used: 0 ms, 140 KB
 
 int main()
 {
