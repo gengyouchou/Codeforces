@@ -21,17 +21,40 @@
 
 using namespace std;
 
+using ll = long long;
+using ld = long double;
+
+const ll N = 1'000'000'000'000L;
+
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-void solve()
+unordered_set<ll> se;
+
+void precub()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    for (ll i = 1; i * i * i <= N; ++i)
     {
-        cin >> x;
+        se.insert(i * i * i);
     }
+}
+
+bool solve()
+{
+    ll x;
+    cin >> x;
+
+    for (ll i = 1; i <= x; ++i)
+    {
+
+        ll cur = i * i * i;
+
+        if (se.find(x - cur) != se.end())
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 int main()
@@ -46,16 +69,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
+        // solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
