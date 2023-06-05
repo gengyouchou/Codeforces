@@ -30,13 +30,24 @@ const ll N = 1'000'000'000'000L;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
-    {
-        cin >> x;
-    }
+    ll a, b, x, y, n;
+    cin >> a >> b >> x >> y >> n;
+
+    ll tempa = a, tempb = b, tempn = n;
+
+    ll op = min(tempa - x, tempn);
+    tempa -= op;
+    tempn -= op;
+    tempb -= min(tempb - y, tempn);
+
+    op = min(b - y, n);
+    b -= op;
+    n -= op;
+    a -= min(a - x, n);
+
+    ll ans = min(tempa * tempb, a * b);
+
+    cout << ans;
 }
 
 int main()
