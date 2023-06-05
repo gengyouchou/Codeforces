@@ -60,27 +60,23 @@ void solve()
         }
     }
 
-    if (idx2 > idxn)
+    if (idx2 > idxn && idx1 > idxn)
     {
-        if (idxn == 1)
-        {
-            cout << idx2 << " " << idxn;
-        }
-        else
-        {
-            cout << idx1 << " " << idxn - 1;
-        }
+        // n, 1, 2
+        // 1, n, 2
+        int idx = min(idx1, idx2);
+        cout << idx << " " << idxn;
     }
-    else if (idx2 < idxn)
+    else if (idx2 < idxn && idx1 < idxn)
     {
-        if (idxn == n)
-        {
-            cout << idx2 << " " << idxn;
-        }
-        else
-        {
-            cout << idx1 << " " << idxn + 1;
-        }
+        // 1, 2, n
+        // 1, n, 2
+        int idx = max(idx1, idx2);
+        cout << idx << " " << idxn;
+    }
+    else
+    {
+        cout << idx1 << " " << idx2;
     }
 
     // 8 5 10 9 2 1 3 4 6 7

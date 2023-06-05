@@ -28,33 +28,31 @@ const ll N = 1'000'000'000'000L;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-unordered_set<ll> se;
-
-void precub()
+void solve()
 {
-    for (ll i = 1; i * i * i <= N; ++i)
+    int n, cost;
+    cin >> n >> cost;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        se.insert(i * i * i);
-    }
-}
-
-bool solve()
-{
-    ll x;
-    cin >> x;
-
-    for (ll i = 1; i * i * i <= x; ++i)
-    {
-
-        ll cur = i * i * i;
-
-        if (se.find(x - cur) != se.end())
-        {
-            return true;
-        }
+        cin >> x;
     }
 
-    return false;
+    unordered_map<int, int> m;
+
+    for (auto &x : vec)
+    {
+        ++m[x];
+    }
+
+    ll ans = 0;
+
+    for (auto [val, freq] : m)
+    {
+        ans += min(freq, cost);
+    }
+
+    cout << ans;
 }
 
 int main()
@@ -67,20 +65,18 @@ int main()
 
     cin >> t;
 
-    precub();
-
     for (int i = 0; i < t; ++i)
     {
-        // solve();
+        solve();
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }
