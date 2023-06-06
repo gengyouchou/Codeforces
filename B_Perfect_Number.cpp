@@ -32,6 +32,31 @@ void solve()
 {
     int n;
     cin >> n;
+    ll count = 0;
+
+    for (int i = 19; i < INT_MAX; ++i)
+    {
+
+        ll cur = i;
+        ll sum = 0;
+
+        while (cur > 0)
+        {
+            sum += cur % 10;
+            cur /= 10;
+        }
+
+        if (sum == 10)
+        {
+            ++count;
+        }
+
+        if (count == n)
+        {
+            cout << i;
+            return;
+        }
+    }
 }
 
 int main()
