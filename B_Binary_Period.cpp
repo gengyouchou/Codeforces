@@ -30,39 +30,27 @@ const ll N = 1'000'000'000'000L;
 
 void solve()
 {
-    int m, n;
-    cin >> m >> n;
+    string t;
+    cin >> t;
 
-    vector<bool> r(m, 1), c(n, 1);
+    int n = t.size();
 
-    for (int i = 0; i < m; ++i)
+    unordered_set<char> se(t.begin(), t.end());
+
+    if (se.size() == 1)
     {
-        for (int j = 0; j < n; ++j)
-        {
-            int cur = 0;
-
-            cin >> cur;
-
-            if (cur == 1)
-            {
-                r[i] = 0;
-                c[j] = 0;
-            }
-        }
+        cout << t;
+        return;
     }
 
-    int countr = accumulate(r.begin(), r.end(), 0);
-    int countc = accumulate(c.begin(), c.end(), 0);
-
-    if (min(countr, countc) % 2 == 0)
+    for (int i = 0; i < n; ++i)
     {
-        cout << "Vivek";
-    }
-    else
-    {
-        cout << "Ashish";
+        cout << 0 << 1;
     }
 }
+
+// 111100 111100
+// 1010101010
 
 int main()
 {
