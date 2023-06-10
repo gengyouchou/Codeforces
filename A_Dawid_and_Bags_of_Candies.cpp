@@ -36,29 +36,9 @@ bool solve()
         cin >> x;
     }
 
-    int sum = accumulate(vec.begin(), vec.end(), 0);
+    sort(vec.begin(), vec.end());
 
-    if (sum % 2 != 0)
-    {
-        return false;
-    }
-
-    vector<bool> dp(sum + 1, false);
-
-    dp[0] = true;
-
-    for (int j = 0; j < 4; ++j)
-    {
-        for (int i = sum; i >= vec[j]; --i)
-        {
-            if (dp[i - vec[j]] == true)
-            {
-                dp[i] = true;
-            }
-        }
-    }
-
-    return dp[sum / 2] == true;
+    return (vec[0] + vec[1] + vec[2] == vec[3]) || (vec[0] + vec[3] == vec[1] + vec[2]);
 }
 
 int main()
