@@ -32,11 +32,65 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
+    vector<ll> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
+
+    vector<ll> postiveBlock, negativeBlock;
+
+    int j = 0;
+
+    for (int i = 0; i < n;)
+    {
+        j = i;
+
+        ll curMx = -1;
+        while (j < n && vec[j] > 0)
+        {
+            curMx = max(curMx, vec[j]);
+            ++j;
+        }
+
+        if (i != j)
+        {
+            postiveBlock.push_back(curMx);
+            i = j;
+        }
+        else
+        {
+            ++i;
+        }
+    }
+
+    j = 0;
+
+    for (int i = 0; i < n;)
+    {
+        j = i;
+
+        ll curMx = INT_MIN;
+        while (j < n && vec[j] < 0)
+        {
+            curMx = max(curMx, vec[j]);
+            ++j;
+        }
+
+        if (i != j)
+        {
+            negativeBlock.push_back(curMx);
+            i = j;
+        }
+        else
+        {
+            ++i;
+        }
+    }
+
+    ll ans = accumulate(negativeBlock.begin(), negativeBlock.end(), 0ll) + accumulate(postiveBlock.begin(), postiveBlock.end(), 0ll);
+
+    cout << ans;
 }
 
 int main()
