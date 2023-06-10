@@ -30,54 +30,49 @@ const ll N = 1'000'000'000'000L;
 
 void solve()
 {
-    int m, n;
-    cin >> m >> n;
-    vector<vector<int>> vec(m, vector<int>(n, 0));
-
+    int n;
+    cin >> n;
+    vector<vector<int>> vec(n);
     for (auto &x : vec)
     {
-        for (auto &y : x)
+        int len = 0;
+        cin >> len;
+
+        for (int i = 0; i < len; ++i)
         {
-            cin >> y;
+            int cur = 0;
+            cin >> cur;
+
+            x.push_back(cur);
         }
     }
 
-    int neg = 0, zero = 0;
+    unordered_set<int> se;
 
-    ll sum = 0;
-    int mn = INT_MAX;
+    vector<int> ans(n, -1);
 
-    for (auto x : vec)
+    for (int i = n - 1; i >= 0; --i)
     {
-        for (auto y : x)
+        for (auto &x : vec[i])
         {
-            if (y < 0)
+            if (se.find(x) == se.end())
             {
-                ++neg;
+                ans[i] = x;
+                se.insert(x);
             }
+        }
 
-            if (y == 0)
-            {
-                ++zero;
-            }
-
-            sum += ab(y);
-            mn = min(mn, ab(y));
+        if (ans[i] == -1)
+        {
+            cout << -1;
+            return;
         }
     }
 
-    if (neg % 2 == 0 || zero > 0)
+    for (auto &x : ans)
     {
-        cout << sum;
+        cout << x << " ";
     }
-    else
-    {
-        cout << sum - 2 * mn;
-    }
-
-    // -1 -1 0   -1 -1
-    // -1 -1 -1  -1  1
-    // -1  1  1  1  -1
 }
 
 int main()
