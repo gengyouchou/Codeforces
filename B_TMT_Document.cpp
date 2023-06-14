@@ -30,14 +30,67 @@ const ll N = 1'000'000'000'000L;
 
 bool solve()
 {
-
     int n;
     cin >> n;
 
     string s;
     cin >> s;
+
+    int countT = 0, countM = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        if (s[i] == 'M')
+        {
+            ++countM;
+            --countT;
+        }
+        else
+        {
+            ++countT;
+        }
+
+        if (countT < 0)
+        {
+            return false;
+        }
+    }
+
+    if (countM != n / 3)
+    {
+        return false;
+    }
+
+    countT = 0, countM = 0;
+
+    for (int i = n - 1; i >= 0; --i)
+    {
+        if (s[i] == 'M')
+        {
+            --countT;
+        }
+        else
+        {
+            ++countT;
+        }
+
+        if (countT < 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
+// TTTTTTTTMMTMTTTMTMMMMMTTTMTTMMMTTMMTTTTMMTTTTTTTTTT
+
+// TMTTTMMMTTMTT
+// 121    2          3
+
+// TMTMTT
+// 101012
+// 212121
 int main()
 {
     ios_base::sync_with_stdio(false);
