@@ -28,49 +28,16 @@ const ll N = 1'000'000'000'000L;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-void solve()
+bool solve()
 {
+
     int n;
     cin >> n;
-    vector<ll> vec(n);
-    for (auto &x : vec)
-    {
-        cin >> x;
-    }
 
-    int negative = 0, zero = 0;
-    int mn = INT_MAX;
-    ll sum = 0;
-
-    for (int i = 0; i < n; ++i)
-    {
-        if (vec[i] < 0)
-        {
-            ++negative;
-        }
-
-        if (vec[i] == 0)
-        {
-            ++zero;
-        }
-
-        int val = ab(vec[i]);
-
-        mn = min(mn, val);
-
-        sum += ab(vec[i]);
-    }
-
-    if (negative % 2 != 0 && zero == 0)
-    {
-        sum -= 2 * mn;
-    }
-
-    cout << sum;
+    string s;
+    cin >> s;
 }
 
-// -mx1  1 -mx2  3
-//  mx  -1  mx2  3
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -83,16 +50,14 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }

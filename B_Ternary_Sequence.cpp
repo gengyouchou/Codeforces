@@ -30,47 +30,47 @@ const ll N = 1'000'000'000'000L;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<ll> vec(n);
-    for (auto &x : vec)
-    {
-        cin >> x;
-    }
+    int x1, y1, z1;
+    int x2, y2, z2;
 
-    int negative = 0, zero = 0;
-    int mn = INT_MAX;
-    ll sum = 0;
+    cin >> x1 >> y1 >> z1;
+    cin >> x2 >> y2 >> z2;
 
-    for (int i = 0; i < n; ++i)
-    {
-        if (vec[i] < 0)
-        {
-            ++negative;
-        }
+    //     0      1     2
 
-        if (vec[i] == 0)
-        {
-            ++zero;
-        }
+    // a b
 
-        int val = ab(vec[i]);
+    // 2 1 = 2
+    // 2 0 = 0
+    // 2 2 = 0
+    // 1 0 = 0
+    // 1 1 = 0
+    // 1 2 =-2;
 
-        mn = min(mn, val);
+    ll cur = min(z1, y2);
 
-        sum += ab(vec[i]);
-    }
+    ll sum21 = 0;
+    sum21 += cur * 2;
+    z1 -= cur;
+    y2 -= cur;
 
-    if (negative % 2 != 0 && zero == 0)
-    {
-        sum -= 2 * mn;
-    }
+    cur = min(y1, x2);
 
-    cout << sum;
+    y1 -= cur;
+    x2 -= cur;
+
+    cur = min(y1, y2);
+
+    y1 -= cur;
+    y2 -= cur;
+
+    cur = min(y1, z2);
+
+    sum21 += -2 * cur;
+
+    cout << sum21;
 }
 
-// -mx1  1 -mx2  3
-//  mx  -1  mx2  3
 int main()
 {
     ios_base::sync_with_stdio(false);
