@@ -32,13 +32,34 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
+    vector<ll> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
+
+    ll sum = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        ll cur = LONG_MIN;
+
+        if (i - 1 >= 0)
+        {
+            cur = vec[i - 1] + vec[i];
+            cur = max(cur, -vec[i - 1] - vec[i]);
+        }
+
+        if (i + 1 < n)
+        {
+            cur = vec[i + 1] + vec[i];
+            cur = max(cur, -vec[i + 1] - vec[i]);
+        }
+    }
 }
 
+// -mx1  1 -mx2  3
+//  mx  -1  mx2  3
 int main()
 {
     ios_base::sync_with_stdio(false);
