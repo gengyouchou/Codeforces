@@ -37,7 +37,37 @@ void solve()
     {
         cin >> x;
     }
+
+    sort(vec.begin(), vec.end());
+
+    int mid = n / 2;
+
+    int l = mid - 1, r = mid + 1;
+
+    cout << vec[mid] << " ";
+
+    while (l >= 0 && r < n)
+    {
+        cout << vec[l] << " ";
+        --l;
+
+        cout << vec[r] << " ";
+        ++r;
+    }
+
+    if (l >= 0)
+    {
+        cout << vec[l];
+    }
+
+    if (r < n)
+    {
+        cout << vec[r];
+    }
 }
+
+// a, a+1, a+2, a+3, a+4, a+5
+// a+3, a+2, a+4, a+1, a+5, a
 
 int main()
 {
