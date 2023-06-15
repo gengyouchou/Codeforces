@@ -30,20 +30,28 @@ const ll N = 1'000'000'000'000L;
 
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, m;
+    cin >> n >> m;
 
-    cout << 2 << endl;
-
-    for (int i = 1; i <= n; ++i)
+    vector<int> deck(n);
+    for (auto &x : deck)
     {
-        if (i % 2 == 1)
-        {
-            for (int j = i; j <= n; j *= 2)
-            {
-                cout << j << " ";
-            }
-        }
+        cin >> x;
+    }
+
+    vector<int> q(m);
+    for (auto &x : q)
+    {
+        cin >> x;
+    }
+
+    for (auto &qq : q)
+    {
+        auto iter = find(deck.begin(), deck.end(), qq) - deck.begin();
+
+        cout << iter + 1 << " ";
+
+        rotate(deck.begin(), deck.begin() + iter, deck.begin() + iter + 1);
     }
 }
 
@@ -53,23 +61,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

@@ -33,17 +33,30 @@ void solve()
     int n;
     cin >> n;
 
-    cout << 2 << endl;
+    vector<int> vec(n, 0);
 
-    for (int i = 1; i <= n; ++i)
+    for (int i = 0; i < n; ++i)
     {
-        if (i % 2 == 1)
-        {
-            for (int j = i; j <= n; j *= 2)
-            {
-                cout << j << " ";
-            }
-        }
+        vec[i] = i + 1;
+    }
+
+    if (n % 3 == 1)
+    {
+        swap(vec[0], vec[1]);
+
+        // 2 1 3 4
+        // 2 0 3 4
+    }
+
+    if (n % 3 == 0)
+    {
+        swap(vec[0], vec[1]);
+        swap(vec[2], vec[3]);
+    }
+
+    for (auto &x : vec)
+    {
+        cout << x << " ";
     }
 }
 

@@ -30,21 +30,19 @@ const ll N = 1'000'000'000'000L;
 
 void solve()
 {
-    int n;
-    cin >> n;
+    ll l, r;
+    cin >> l >> r;
 
-    cout << 2 << endl;
-
-    for (int i = 1; i <= n; ++i)
+    for (ll begin = l; begin + 2 <= r; ++begin)
     {
-        if (i % 2 == 1)
+        if (gcd(begin, begin + 2) != 1)
         {
-            for (int j = i; j <= n; j *= 2)
-            {
-                cout << j << " ";
-            }
+            cout << begin << " " << begin + 1 << " " << begin + 2;
+            return;
         }
     }
+
+    cout << -1;
 }
 
 int main()
@@ -53,23 +51,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

@@ -33,19 +33,31 @@ void solve()
     int n;
     cin >> n;
 
-    cout << 2 << endl;
+    string s;
+    cin >> s;
 
-    for (int i = 1; i <= n; ++i)
+    int preAidx = -1;
+
+    int ans = 0;
+
+    for (int i = 0; i < n; ++i)
     {
-        if (i % 2 == 1)
+
+        if (s[i] == 'A')
         {
-            for (int j = i; j <= n; j *= 2)
-            {
-                cout << j << " ";
-            }
+            preAidx = i;
+        }
+        else if (preAidx != -1)
+        {
+            ans = max(ans, i - preAidx);
         }
     }
+
+    cout << ans;
 }
+
+// APPAPPPAPPPP
+// APPAPPAPPPP
 
 int main()
 {

@@ -33,19 +33,12 @@ void solve()
     int n;
     cin >> n;
 
-    cout << 2 << endl;
-
-    for (int i = 1; i <= n; ++i)
-    {
-        if (i % 2 == 1)
-        {
-            for (int j = i; j <= n; j *= 2)
-            {
-                cout << j << " ";
-            }
-        }
-    }
+    cout << 9 * n << " " << 8 * n;
 }
+
+// You are given a positive integer n. Find two composite integers a,b such that a−b=n.
+
+// 3*x-2*x=x;
 
 int main()
 {
@@ -53,23 +46,7 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
-
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }
