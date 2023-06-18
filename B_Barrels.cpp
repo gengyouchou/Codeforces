@@ -28,17 +28,26 @@ const ll N = 1'000'000'000'000L;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
-ll M = 1e9 + 7;
-
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
     vector<int> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
+
+    sort(vec.rbegin(), vec.rend());
+
+    ll mx = 0;
+
+    for (int i = 0; i < k + 1; ++i)
+    {
+        mx += vec[i];
+    }
+
+    cout << mx;
 }
 
 int main()

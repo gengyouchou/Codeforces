@@ -34,13 +34,44 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    string s;
+    cin >> s;
+
+    int mid = n / 2;
+    int count = 0;
+
+    int left = mid, right = mid;
+
+    while (left >= 0)
     {
-        cin >> x;
+        if (s[left] == s[mid])
+        {
+            --left;
+        }
+        else
+        {
+            break;
+        }
     }
+
+    while (right < n)
+    {
+        if (s[right] == s[mid])
+        {
+            ++right;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    cout << right - left - 1;
 }
 
+// eexee
+//
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -53,7 +84,21 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
+
+        // if (t == 924 && i == 22)
+        // {
+        //     int n;
+        //     cin >> n;
+
+        //     string s;
+        //     cin >> s;
+
+        //     cout << s << endl;
+        // }
+        // else
+        // {
         solve();
+        // }
 
         // if (solve())
         // {
