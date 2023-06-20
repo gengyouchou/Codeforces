@@ -30,28 +30,28 @@ const ll N = 1'000'000'000'000L;
 
 ll M = 1e9 + 7;
 
-bool dfs(int hc, int dc, int hm, int dm)
-{
-}
-
 bool solve()
 {
     ll hc, dc, hm, dm;
     cin >> hc >> dc >> hm >> dm;
 
-    ll coins, weapon, attack;
-    cin >> coins >> weapon >> attack;
+    ll coins, weapon, armor;
+    cin >> coins >> weapon >> armor;
 
-    while (hm > 0)
+    hc += coins * armor;
+
+    for (int i = 0; i <= coins; ++i)
     {
-        hm -= dc;
-        hc -= dm;
-
-        if (hc < 0 && coins == 0)
+        if ((hc + dm - 1) / dm >= (hm + dc - 1) / dc)
         {
-            return false;
+            return true;
         }
+
+        hc -= armor;
+        dc += weapon;
     }
+
+    return false;
 }
 
 int main()
@@ -66,16 +66,15 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
