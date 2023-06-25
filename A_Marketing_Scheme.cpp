@@ -38,34 +38,12 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    for (auto &x : a)
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
         cin >> x;
     }
-
-    vector<int> b(n);
-    for (auto &x : b)
-    {
-        cin >> x;
-    }
-
-    ll ans = 0;
-
-    for (int i = 0; i + 1 < n; ++i)
-    {
-        int cur = INT_MAX;
-        cur = min(cur, ab(b[i + 1] - a[i]) + ab(a[i + 1] - b[i]));
-        cur = min(cur, ab(a[i + 1] - a[i]) + ab(b[i + 1] - b[i]));
-
-        ans += cur;
-    }
-
-    cout << ans;
 }
-
-// 3 3   10 10
-// 10 10 3 3
 
 int main()
 {
