@@ -38,12 +38,25 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    int x = (n / 2) + 1;
+
+    for (int i = 1; i <= n / 2 + n % 2; ++i)
     {
-        cin >> x;
+        cout << x + i - 1 << " ";
+
+        if (i != n / 2 + n % 2 || n % 2 == 0)
+        {
+            cout << i << " ";
+        }
     }
 }
+
+// 1 2 3 4 5
+// 3 1 4 2 5
+
+// 1 5 2 3 6 4
+// 4 1 5 2 6 3
 
 int main()
 {

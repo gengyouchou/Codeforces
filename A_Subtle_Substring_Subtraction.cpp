@@ -30,14 +30,39 @@ const ll N = 1'000'000'000'000L;
 
 ll M = 1e9 + 7;
 
+// int dp[1001][26][26];
+
+// memset(dp, -1, sizeof(dp));
+
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    string s;
+    cin >> s;
+
+    int n = s.size();
+
+    ll sum = 0;
+    for (auto &c : s)
     {
-        cin >> x;
+        sum += c - 'a' + 1;
+    }
+
+    if (n == 1)
+    {
+        cout << "Bob"
+             << " " << sum;
+    }
+    else
+    {
+        int subs = 0;
+
+        if (n % 2 == 1)
+        {
+            subs = min(s[0] - 'a' + 1, s[n - 1] - 'a' + 1);
+        }
+        cout << "Alice"
+             << " " << sum - 2 * subs;
     }
 }
 
