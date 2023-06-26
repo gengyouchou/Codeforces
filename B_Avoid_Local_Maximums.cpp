@@ -34,18 +34,48 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-bool solve()
+void solve()
 {
-    int l, r;
-    cin >> l >> r;
-
-    if (l % (r + 1) >= (r + 2) / 2)
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        return true;
+        cin >> x;
     }
 
-    return false;
+    vec.push_back(1e9);
+
+    int len = n + 1;
+
+    int count = 0;
+
+    for (int i = 1; i + 2 < len; ++i)
+    {
+        if (vec[i] > vec[i - 1] && vec[i] > vec[i + 1])
+        {
+            vec[i + 1] = max(vec[i], vec[i + 2]);
+            ++count;
+        }
+    }
+
+    cout << count << endl;
+
+    for (int i = 0; i < n; ++i)
+    {
+        int x = vec[i];
+        cout << x << " ";
+    }
 }
+
+// 1 2 1 2 1
+// 1 2 2 2 1
+
+// 1 2 1 1 0 1 2 2
+// 1 2 2 1 0 1 2 1
+
+// 1 2 1 3 2 3 1 2 1
+// 1 2 3 3 2 3 3 2 1
 
 int main()
 {
@@ -59,14 +89,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        solve();
+
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }

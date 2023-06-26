@@ -34,17 +34,21 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-bool solve()
+void solve()
 {
-    int l, r;
-    cin >> l >> r;
+    int n;
+    cin >> n;
 
-    if (l % (r + 1) >= (r + 2) / 2)
+    //  x^y⋅y+y^x⋅x=n
+
+    if (n % 2 == 0)
     {
-        return true;
+        cout << n / 2 << " " << 1;
     }
-
-    return false;
+    else
+    {
+        cout << -1;
+    }
 }
 
 int main()
@@ -59,14 +63,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        solve();
+
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }

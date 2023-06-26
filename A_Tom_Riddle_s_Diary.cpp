@@ -34,17 +34,22 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
+set<string> se;
+
 bool solve()
 {
-    int l, r;
-    cin >> l >> r;
+    string s;
+    cin >> s;
 
-    if (l % (r + 1) >= (r + 2) / 2)
+    if (se.find(s) != se.end())
     {
         return true;
     }
-
-    return false;
+    else
+    {
+        se.insert(s);
+        return false;
+    }
 }
 
 int main()
@@ -57,8 +62,11 @@ int main()
 
     cin >> t;
 
+    se.clear();
+
     for (int i = 0; i < t; ++i)
     {
+
         if (solve())
         {
             cout << "YES";
