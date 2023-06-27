@@ -42,33 +42,24 @@ void solve()
     string s;
     cin >> s;
 
-    int count01 = 0, count10 = 0;
+    string t = "trygub";
 
-    for (int i = 0; i + 1 < n; ++i)
+    string ans = "";
+
+    for (auto &c : s)
     {
-        if (s[i] == '1' && s[i + 1] == '1')
+        if (c == 't')
         {
-            ++count10;
+            ans.push_back(c);
         }
-
-        if (s[i] == '0' && s[i + 1] == '0')
+        else
         {
-            ++count01;
+            ans.insert(ans.begin(), c);
         }
     }
-    cout << max(count01, count10);
+
+    cout << ans;
 }
-
-// 1001
-// [10]01
-
-// 11101000
-// 01234567
-
-// 1[110100]0
-//  [0[0101]1]
-//    [1010]
-// 10101010
 
 int main()
 {

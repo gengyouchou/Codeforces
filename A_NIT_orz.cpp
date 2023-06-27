@@ -36,39 +36,23 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-
-    string s;
-    cin >> s;
-
-    int count01 = 0, count10 = 0;
-
-    for (int i = 0; i + 1 < n; ++i)
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> vec(n);
+    for (auto &x : vec)
     {
-        if (s[i] == '1' && s[i + 1] == '1')
-        {
-            ++count10;
-        }
-
-        if (s[i] == '0' && s[i + 1] == '0')
-        {
-            ++count01;
-        }
+        cin >> x;
     }
-    cout << max(count01, count10);
+
+    ll ans = 0;
+
+    for (int i = 0; i < n; ++i)
+    {
+        ans = max(ans, vec[i] | k);
+    }
+
+    cout << ans;
 }
-
-// 1001
-// [10]01
-
-// 11101000
-// 01234567
-
-// 1[110100]0
-//  [0[0101]1]
-//    [1010]
-// 10101010
 
 int main()
 {

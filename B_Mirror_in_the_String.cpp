@@ -42,29 +42,31 @@ void solve()
     string s;
     cin >> s;
 
-    int left = -1;
-
-    for (int i = 0; i + 1 < n; ++i)
-    {
-        if (s[i] < s[i + 1])
-        {
-            left = i;
-            break;
-        }
-    }
-
-    if (left != -1)
-    {
-        string rs = s.substr(0, left + 1);
-        string t = rs;
-        reverse(rs.begin(), rs.end());
-
-        cout << t + rs;
-    }
-    else
+    if (n == 1 || s[0] == s[1])
     {
         cout << s[0] << s[0];
+        return;
     }
+
+    string res = "";
+
+    res += s.front();
+
+    for (int i = 1; i < n; ++i)
+    {
+        if (res.back() < s[i])
+        {
+            break;
+        }
+
+        res.push_back(s[i]);
+    }
+
+    cout << res;
+
+    reverse(res.begin(), res.end());
+
+    cout << res;
 }
 
 // cba|cbacba

@@ -38,37 +38,25 @@ void solve()
 {
     int n;
     cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
+    {
+        cin >> x;
+    }
 
-    string s;
-    cin >> s;
-
-    int count01 = 0, count10 = 0;
+    int count = 0;
 
     for (int i = 0; i + 1 < n; ++i)
     {
-        if (s[i] == '1' && s[i + 1] == '1')
+        if (vec[i] > vec[i + 1])
         {
-            ++count10;
-        }
-
-        if (s[i] == '0' && s[i + 1] == '0')
-        {
-            ++count01;
+            ++count;
+            ++i;
         }
     }
-    cout << max(count01, count10);
+
+    cout << count;
 }
-
-// 1001
-// [10]01
-
-// 11101000
-// 01234567
-
-// 1[110100]0
-//  [0[0101]1]
-//    [1010]
-// 10101010
 
 int main()
 {

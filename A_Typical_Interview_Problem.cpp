@@ -34,7 +34,7 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
     int n;
     cin >> n;
@@ -42,33 +42,43 @@ void solve()
     string s;
     cin >> s;
 
-    int count01 = 0, count10 = 0;
+    string t = "FBFFBFFB";
+    //          FBFFBFFB
 
-    for (int i = 0; i + 1 < n; ++i)
+    int len = t.size();
+
+    int i = 0;
+
+    while (i < len)
     {
-        if (s[i] == '1' && s[i + 1] == '1')
+
+        int j = 0;
+        int cur = i;
+
+        while (t[cur % len] == s[j])
         {
-            ++count10;
+            ++j;
+            ++cur;
+
+            if (j == n)
+            {
+                return true;
+            }
         }
 
-        if (s[i] == '0' && s[i + 1] == '0')
-        {
-            ++count01;
-        }
+        ++i;
     }
-    cout << max(count01, count10);
+
+    return false;
 }
 
-// 1001
-// [10]01
+// 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+//     F   B F     F  B    F        FB        F    B
 
-// 11101000
-// 01234567
+// FBFFBFFBFB
 
-// 1[110100]0
-//  [0[0101]1]
-//    [1010]
-// 10101010
+// BFFBFFBF
+// 53353353
 
 int main()
 {
@@ -82,16 +92,15 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
