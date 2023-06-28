@@ -34,50 +34,6 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-bool checkOk(vector<int> nums, int mid)
-{
-
-    int n = nums.size();
-    int count = 0;
-
-    unordered_map<int, int> visited;
-
-    for (int i = 0; i < n; ++i)
-    {
-        if (count >= mid)
-        {
-            break;
-        }
-
-        if (nums[i] != 0)
-        {
-            if (visited[nums[i]] == 0)
-            {
-                visited[nums[i]] = 1;
-                ++count;
-            }
-        }
-    }
-
-    for (int i = 0; i < n; ++i)
-    {
-        if (visited[nums[i]] == 1)
-        {
-            nums[i] = 0;
-        }
-    }
-
-    for (int i = 0; i + 1 < n; ++i)
-    {
-        if (nums[i] > nums[i + 1])
-        {
-            return false;
-        }
-    }
-
-    return true;
-}
-
 void solve()
 {
     int n;
@@ -88,26 +44,41 @@ void solve()
         cin >> x;
     }
 
-    int l = 0, r = n;
+    int odd = 0;
 
-    while (l < r)
+    for (auto &x : vec)
     {
-        int mid = l + (r - l) / 2;
-
-        if (checkOk(vec, mid) == true)
+        if (x % 2 == 1)
         {
-            r = mid;
-        }
-        else
-        {
-            l = mid + 1;
+            ++odd;
         }
     }
 
-    cout << l;
-}
+    if (odd > 0)
+    {
+        cout << n - odd;
+        return;
+    }
 
-// 5 6 0 5 6 0 8
+    int count = INT_MAX;
+
+    for (auto &x : vec)
+    {
+        int temp = x;
+
+        int cnt = 0;
+
+        while (temp % 2 == 0)
+        {
+            temp /= 2;
+            ++cnt;
+        }
+
+        count = min(count, cnt);
+    }
+
+    cout << count + n - 1;
+}
 
 int main()
 {
