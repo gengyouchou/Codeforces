@@ -30,47 +30,14 @@ const ll N = 1'000'000'000'000L;
 
 ll M = 1e9 + 7;
 
-// int dp[1001][26][26];
-
-// memset(dp, -1, sizeof(dp));
-
-bool tooLess(const int b, const int r, int mid)
-{
-    if (mid + 1 > b)
-    {
-        return false;
-    }
-
-    if (mid + 2 > r)
-    {
-        return false;
-    }
-
-    return true;
-}
-
 void solve()
 {
     int y, b, r;
     cin >> y >> b >> r;
 
-    int left = 0, right = y;
+    int right = min(y + 2, min(b + 1, r));
 
-    while (left < right)
-    {
-        int mid = right - (right - left) / 2;
-
-        if (tooLess(b, r, mid) == true)
-        {
-            left = mid;
-        }
-        else
-        {
-            right = mid - 1;
-        }
-    }
-
-    cout << left + left + 1 + left + 2;
+    cout << right * 3 - 3;
 }
 
 // b=y+1
