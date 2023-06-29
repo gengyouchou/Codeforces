@@ -44,24 +44,24 @@ void solve()
         cin >> x;
     }
 
-    unordered_map<int, int> m;
+    int ans = 0;
 
     for (int i = 0; i < n; ++i)
     {
-        m[vec[i]] = i + 1;
-    }
 
-    int ans = -1;
+        int l = i, r = i;
 
-    for (auto [val, idx] : m)
-    {
-        for (auto [val2, idx2] : m)
+        while (l - 1 >= 0 && vec[l] >= vec[l - 1])
         {
-            if (gcd(val, val2) == 1)
-            {
-                ans = max(ans, idx2 + idx);
-            }
+            --l;
         }
+
+        while (r + 1 < n && vec[r] >= vec[r + 1])
+        {
+            ++r;
+        }
+
+        ans = max(ans, r - l + 1);
     }
 
     cout << ans;
@@ -73,23 +73,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

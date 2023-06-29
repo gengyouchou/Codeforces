@@ -36,35 +36,18 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    string s;
+    cin >> s;
+
+    unordered_set<char> se(s.begin(), s.end());
+
+    if (se.size() == 1)
     {
-        cin >> x;
+        cout << -1;
+        return;
     }
 
-    unordered_map<int, int> m;
-
-    for (int i = 0; i < n; ++i)
-    {
-        m[vec[i]] = i + 1;
-    }
-
-    int ans = -1;
-
-    for (auto [val, idx] : m)
-    {
-        for (auto [val2, idx2] : m)
-        {
-            if (gcd(val, val2) == 1)
-            {
-                ans = max(ans, idx2 + idx);
-            }
-        }
-    }
-
-    cout << ans;
+    cout << s.size() - 1;
 }
 
 int main()

@@ -36,35 +36,20 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int a, b;
+    cin >> a >> b;
+
+    a = ab(a);
+    b = ab(b);
+
+    int skip = ab(a - b);
+
+    if (skip > 0)
     {
-        cin >> x;
+        --skip;
     }
 
-    unordered_map<int, int> m;
-
-    for (int i = 0; i < n; ++i)
-    {
-        m[vec[i]] = i + 1;
-    }
-
-    int ans = -1;
-
-    for (auto [val, idx] : m)
-    {
-        for (auto [val2, idx2] : m)
-        {
-            if (gcd(val, val2) == 1)
-            {
-                ans = max(ans, idx2 + idx);
-            }
-        }
-    }
-
-    cout << ans;
+    cout << a + b + skip;
 }
 
 int main()
