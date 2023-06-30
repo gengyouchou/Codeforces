@@ -36,56 +36,31 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    string s;
-    cin >> s;
-
-    int n = s.size();
-
-    map<char, vector<int>> m;
-
-    for (int i = 0; i < n; ++i)
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        m[s[i]].push_back(i + 1);
+        cin >> x;
     }
 
-    char start = s[0], end = s[n - 1];
+    int count = 0;
 
-    char cur = start;
-
-    vector<int> ans;
-
-    while (cur != end)
+    while (!is_sorted(vec.begin(), vec.end()))
     {
-        auto v = m[cur];
 
-        for (int i = 0; i < v.size(); ++i)
+        for (int i = count % 2; i + 1 < n; i += 2)
         {
-            ans.push_back(v[i]);
+            if (vec[i] > vec[i + 1])
+            {
+                swap(vec[i], vec[i + 1]);
+            }
         }
 
-        if (cur > end)
-        {
-            --cur;
-        }
-        else
-        {
-            ++cur;
-        }
+        ++count;
     }
 
-    auto v = m[cur];
-
-    for (int i = 0; i < v.size(); ++i)
-    {
-        ans.push_back(v[i]);
-    }
-
-    cout << ab(end - start) << " " << ans.size() << endl;
-
-    for (auto &x : ans)
-    {
-        cout << x << " ";
-    }
+    cout << count;
 }
 
 int main()
