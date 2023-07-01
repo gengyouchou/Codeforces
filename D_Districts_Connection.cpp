@@ -38,19 +38,11 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<ll> vec(n);
+    vector<int> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
-
-    sort(vec.begin(), vec.end());
-
-    ll a = vec[0] * vec[1] * vec[n - 1] * vec[n - 2] * vec[n - 3];
-    ll b = vec[0] * vec[1] * vec[2] * vec[3] * vec[n - 1];
-    ll c = vec[n - 1] * vec[n - 2] * vec[n - 3] * vec[n - 4] * vec[n - 5];
-
-    cout << max(a, max(b, c));
 }
 
 int main()
