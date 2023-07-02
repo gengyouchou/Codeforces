@@ -38,56 +38,17 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
+    vector<int> vec(n + 2);
     for (auto &x : vec)
     {
         cin >> x;
     }
 
-    vector<int> nums;
+    int m = vec.size();
 
-    for (int i = 0; i < n; ++i)
-    {
-        if (!nums.empty() && nums.back() == vec[i])
-        {
-            continue;
-        }
+    multiset<int> mst(vec.begin(), vec.end());
 
-        nums.push_back(vec[i]);
-    }
-
-    unordered_map<int, vector<int>> mp;
-
-    int m = nums.size();
-
-    for (int i = 0; i < m; ++i)
-    {
-        mp[nums[i]].push_back(i);
-    }
-
-    ll ans = INT_MAX;
-
-    for (auto [val, v] : mp)
-    {
-
-        int len = v.size();
-
-        ll count = len + 1;
-
-        if (v[0] - 1 < 0)
-        {
-            --count;
-        }
-
-        if (v[len - 1] + 1 == m)
-        {
-            --count;
-        }
-
-        ans = min(ans, count);
-    }
-
-    cout << ans;
+    
 }
 
 int main()
