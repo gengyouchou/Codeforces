@@ -30,58 +30,44 @@ const ll N = 1'000'000'000'000L;
 
 ll M = 1e9 + 7;
 
-// int dp[1001][26][26];
-
-// memset(dp, -1, sizeof(dp));
+vector<ll> ans;
 
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    int pos = lower_bound(ans.begin(), ans.end(), n) - ans.begin();
+
+    if (ans[pos] != n && ans[pos] - n == 1)
     {
-        cin >> x;
+        cout << pos + 1;
     }
-
-    unordered_set<int> se(vec.begin(), vec.end());
-
-    if (se.size() == 1)
+    else
     {
-        cout << "NO" << endl;
-        return;
-    }
-
-    cout << "YES" << endl;
-
-    int diffpos = -1;
-
-    for (int i = 0; i < n; ++i)
-    {
-        if (vec[0] != vec[i])
-        {
-            cout << 1 << " " << i + 1 << endl;
-            diffpos = i + 1;
-        }
-    }
-
-    for (int i = 1; i < n; ++i)
-    {
-        if (vec[0] == vec[i])
-        {
-            cout << i + 1 << " " << diffpos << endl;
-        }
+        cout << pos;
     }
 }
 
-// {1, 2}, {1, 2}, {1, 3}
-// {3, 1}
+// +1 +2 +3 +4 +5 +6 +7 +8 +9 +10
+//  1  3  6 10
+// -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+//  2  3  4  5  6  7  8  9 10 11
 
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
+
+    ll len = 1e6;
+
+    ans.push_back(0);
+
+    for (int i = 1; i <= 1e6; ++i)
+    {
+        ans.push_back(ans.back() + i);
+    }
 
     int t = 0;
 

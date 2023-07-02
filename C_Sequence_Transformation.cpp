@@ -44,38 +44,51 @@ void solve()
         cin >> x;
     }
 
-    unordered_set<int> se(vec.begin(), vec.end());
-
-    if (se.size() == 1)
-    {
-        cout << "NO" << endl;
-        return;
-    }
-
-    cout << "YES" << endl;
-
-    int diffpos = -1;
+    vector<int> nums;
 
     for (int i = 0; i < n; ++i)
     {
-        if (vec[0] != vec[i])
+        if (!nums.empty() && nums.back() == vec[i])
         {
-            cout << 1 << " " << i + 1 << endl;
-            diffpos = i + 1;
+            continue;
         }
+
+        nums.push_back(vec[i]);
     }
 
-    for (int i = 1; i < n; ++i)
+    unordered_map<int, vector<int>> mp;
+
+    int m = nums.size();
+
+    for (int i = 0; i < m; ++i)
     {
-        if (vec[0] == vec[i])
-        {
-            cout << i + 1 << " " << diffpos << endl;
-        }
+        mp[nums[i]].push_back(i);
     }
-}
 
-// {1, 2}, {1, 2}, {1, 3}
-// {3, 1}
+    ll ans = INT_MAX;
+
+    for (auto [val, v] : mp)
+    {
+
+        int len = v.size();
+
+        ll count = len + 1;
+
+        if (v[0] - 1 < 0)
+        {
+            --count;
+        }
+
+        if (v[len - 1] + 1 == n)
+        {
+            --count;
+        }
+
+        ans = min(ans, count);
+    }
+
+    cout << ans;
+}
 
 int main()
 {
