@@ -36,51 +36,34 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n + 2);
-    for (auto &x : vec)
+    string s;
+    cin >> s;
+
+    int n = s.size();
+
+    int c0 = 0, c1 = 0;
+
+    for (auto &c : s)
     {
-        cin >> x;
-    }
-
-    int m = vec.size();
-
-    multiset<ll> mst(vec.begin(), vec.end());
-
-    ll sum = accumulate(vec.begin(), vec.end(), 0ll);
-
-    bool flag = false;
-
-    for (int i = 0; i < m; ++i)
-    {
-        sum -= vec[i];
-        auto iteri = mst.find(vec[i]);
-        mst.erase(iteri);
-
-        if (sum % 2 == 0 && mst.find(sum / 2) != mst.end())
+        if (c == '1')
         {
-
-            auto iter = mst.find(sum / 2);
-            mst.erase(iter);
-
-            for (auto &val : mst)
-            {
-                cout << val << " ";
-            }
-
-            flag = true;
-
-            break;
+            ++c1;
         }
-
-        sum += vec[i];
-        mst.insert(vec[i]);
+        else
+        {
+            ++c0;
+        }
     }
 
-    if (flag == false)
+    int count01 = min(c1, c0);
+
+    if (count01 % 2 == 1)
     {
-        cout << -1;
+        cout << "DA";
+    }
+    else
+    {
+        cout << "NET";
     }
 }
 
