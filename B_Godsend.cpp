@@ -43,6 +43,31 @@ void solve()
     {
         cin >> x;
     }
+
+    ll sum = accumulate(vec.begin(), vec.end(), 0ll);
+
+    int odd = 0, even = 0;
+
+    for (auto &x : vec)
+    {
+        if (x % 2 == 0)
+        {
+            ++even;
+        }
+        else
+        {
+            ++odd;
+        }
+    }
+
+    if (sum % 2 == 1 || odd > 1)
+    {
+        cout << "First";
+    }
+    else
+    {
+        cout << "Second";
+    }
 }
 
 int main()
@@ -51,23 +76,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

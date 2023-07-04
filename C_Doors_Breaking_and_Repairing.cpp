@@ -37,7 +37,7 @@ ll M = 1e9 + 7;
 void solve()
 {
     int n, a, b;
-    cin >> n >> a, b;
+    cin >> n >> a >> b;
     vector<int> vec(n);
     for (auto &x : vec)
     {
