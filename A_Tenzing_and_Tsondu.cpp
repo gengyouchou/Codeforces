@@ -36,39 +36,36 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n);
+    for (auto &x : a)
     {
         cin >> x;
     }
 
-    int mn = *min_element(vec.begin(), vec.end());
-
-    if (mn == vec[0])
+    vector<int> b(m);
+    for (auto &x : b)
     {
-        cout << "Bob";
+        cin >> x;
+    }
+
+    ll suma = accumulate(a.begin(), a.end(), 0ll);
+    ll sumb = accumulate(b.begin(), b.end(), 0ll);
+
+    if (suma > sumb)
+    {
+        cout << "Tsondu";
+    }
+    else if (suma < sumb)
+    {
+        cout << "Tenzing";
     }
     else
     {
-        cout << "Alice";
+        cout << "Draw";
     }
 }
-
-// 3 4
-// 4 2
-// 2 3
-// 3 1
-// 1 2
-// 2 0
-// 0 1
-
-// 2 2 a
-// 2 1 b
-// 1 1 a
-// 1 0 b
-// 0 0 a
 
 int main()
 {

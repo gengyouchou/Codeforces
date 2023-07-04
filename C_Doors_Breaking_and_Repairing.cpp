@@ -36,39 +36,34 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, a, b;
+    cin >> n >> a, b;
     vector<int> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
 
-    int mn = *min_element(vec.begin(), vec.end());
-
-    if (mn == vec[0])
+    if (a > b)
     {
-        cout << "Bob";
+        cout << n;
     }
     else
     {
-        cout << "Alice";
+
+        int del = 0;
+
+        for (auto &x : vec)
+        {
+            if (x <= a)
+            {
+                ++del;
+            }
+        }
+
+        cout << (del + 1) / 2;
     }
 }
-
-// 3 4
-// 4 2
-// 2 3
-// 3 1
-// 1 2
-// 2 0
-// 0 1
-
-// 2 2 a
-// 2 1 b
-// 1 1 a
-// 1 0 b
-// 0 0 a
 
 int main()
 {
@@ -76,23 +71,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

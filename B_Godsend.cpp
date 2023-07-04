@@ -43,32 +43,7 @@ void solve()
     {
         cin >> x;
     }
-
-    int mn = *min_element(vec.begin(), vec.end());
-
-    if (mn == vec[0])
-    {
-        cout << "Bob";
-    }
-    else
-    {
-        cout << "Alice";
-    }
 }
-
-// 3 4
-// 4 2
-// 2 3
-// 3 1
-// 1 2
-// 2 0
-// 0 1
-
-// 2 2 a
-// 2 1 b
-// 1 1 a
-// 1 0 b
-// 0 0 a
 
 int main()
 {

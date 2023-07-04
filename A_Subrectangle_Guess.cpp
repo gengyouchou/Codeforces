@@ -36,39 +36,45 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
+    int m, n;
+    cin >> m >> n;
+
+    vector<vector<int>> vec(m, vector<int>(n, 0));
     for (auto &x : vec)
     {
-        cin >> x;
+        for (auto &y : x)
+        {
+            cin >> y;
+        }
     }
 
-    int mn = *min_element(vec.begin(), vec.end());
+    int mxi = 0, mxj = 0;
+    int curmx = vec[0][0];
 
-    if (mn == vec[0])
+    for (int i = 0; i < m; ++i)
     {
-        cout << "Bob";
+        for (int j = 0; j < n; ++j)
+        {
+            if (vec[i][j] > curmx)
+            {
+                mxi = i;
+                mxj = j;
+                curmx = vec[i][j];
+            }
+        }
     }
-    else
+
+    vector<vector<ll>> dict = {{0, 0}, {0, n - 1}, {m - 1, 0}, {m - 1, n - 1}};
+
+    ll ans = 0;
+
+    for (auto &x : dict)
     {
-        cout << "Alice";
+        ans = max(ans, (ab(x[0] - mxi) + 1) * (ab(x[1] - mxj) + 1));
     }
+
+    cout << ans;
 }
-
-// 3 4
-// 4 2
-// 2 3
-// 3 1
-// 1 2
-// 2 0
-// 0 1
-
-// 2 2 a
-// 2 1 b
-// 1 1 a
-// 1 0 b
-// 0 0 a
 
 int main()
 {

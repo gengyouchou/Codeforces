@@ -38,11 +38,35 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    string s;
+    cin >> s;
+
+    bool even = false, odd = false;
+
+    for (int i = 0; i < n; ++i)
     {
-        cin >> x;
+        int val = s[i] - '0';
+
+        if (i % 2 == 0)
+        {
+            odd = odd | (val % 2 == 1);
+        }
+        else
+        {
+            even = even | (val % 2 == 0);
+        }
     }
+
+    if (n % 2 == 1)
+    {
+        cout << (odd ? 1 : 2);
+    }
+    else
+    {
+        cout << (even ? 2 : 1);
+    }
+
+    //  If the single last digit is odd, then Raze wins, else Breach wins.
 }
 
 int main()

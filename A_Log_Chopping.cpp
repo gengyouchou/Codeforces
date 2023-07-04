@@ -44,31 +44,25 @@ void solve()
         cin >> x;
     }
 
-    int mn = *min_element(vec.begin(), vec.end());
+    int count = 0;
 
-    if (mn == vec[0])
+    for (auto &x : vec)
     {
-        cout << "Bob";
+        count += x - 1;
+    }
+
+    if (count % 2 == 0)
+    {
+        cout << "maomao90";
     }
     else
     {
-        cout << "Alice";
+        cout << "errorgorn";
     }
 }
 
-// 3 4
-// 4 2
-// 2 3
-// 3 1
-// 1 2
-// 2 0
-// 0 1
-
-// 2 2 a
-// 2 1 b
-// 1 1 a
-// 1 0 b
-// 0 0 a
+// 2    4         2  1
+// 1 1  1 1 1 1   1
 
 int main()
 {
