@@ -34,7 +34,7 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
     int m, n;
     cin >> m >> n;
@@ -50,8 +50,56 @@ void solve()
         cin >> x;
     }
 
-    
+    unordered_set<string> sea, seb;
+
+    for (auto &x : a)
+    {
+        sea.insert(x);
+    }
+
+    for (auto &x : b)
+    {
+        seb.insert(x);
+    }
+
+    int common = 0;
+
+    for (auto &x : sea)
+    {
+        if (seb.find(x) != seb.end())
+        {
+            ++common;
+        }
+    }
+
+    int alen = sea.size(), blen = seb.size();
+
+    if (common % 2 == 0)
+    {
+        if (alen - common > blen - common)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        if (alen - common > blen - common - 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
+
+// 1、common若为偶数，则两人说完共同会的单词后，若n-common>m-common,则A赢。
+// 2、common若为奇数，则两人说完共同会的单词后，若n-common>m-common-1,则A赢。
 
 int main()
 {
@@ -59,23 +107,14 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
-
-    cin >> t;
-
-    for (int i = 0; i < t; ++i)
+    if (solve())
     {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
+        cout << "YES";
     }
+    else
+    {
+        cout << "NO";
+    }
+
+    cout << endl;
 }
