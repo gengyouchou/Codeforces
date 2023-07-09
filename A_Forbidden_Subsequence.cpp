@@ -36,13 +36,40 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    string s, t;
+
+    cin >> s >> t;
+
+    set<char> se(s.begin(), s.end());
+
+    sort(s.begin(), s.end());
+
+    if (t == "abc" && se.find('a') != se.end() && se.find('b') != se.end() && se.find('c') != se.end())
     {
-        cin >> x;
+        int n = s.size();
+        int i = 0, j = n - 1;
+
+        while (i < j)
+        {
+
+            while (i < j && s[i] != 'b')
+            {
+                ++i;
+            }
+
+            while (i < j && s[j] != 'c')
+            {
+                --j;
+            }
+
+            swap(s[i], s[j]);
+
+            ++i;
+            --j;
+        }
     }
+
+    cout << s;
 }
 
 int main()

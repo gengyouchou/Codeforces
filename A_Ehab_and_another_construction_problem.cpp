@@ -38,11 +38,14 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    if (n == 1)
     {
-        cin >> x;
+        cout << -1;
+        return;
     }
+
+    cout << n << " " << n;
 }
 
 int main()
@@ -51,23 +54,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }
