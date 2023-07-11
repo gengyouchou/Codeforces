@@ -34,33 +34,37 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-bool solve()
+void solve()
 {
-    int n, d;
-    cin >> n >> d;
-
-    int l = 0, r = n;
-
-    while (l < r)
+    int n;
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        int mid = l + (r - l) / 2;
+        cin >> x;
+    }
 
-        if (mid + (d + mid) / (mid + 1) <= n)
+    sort(vec.begin(), vec.end());
+
+    for (int i = 1; i <= 1024; ++i)
+    {
+        vector<int> temp;
+
+        for (int j = 0; j < n; ++j)
         {
-            r = mid;
+            temp.push_back(vec[j] ^ i);
         }
-        else
+
+        sort(temp.begin(), temp.end());
+
+        if (temp == vec)
         {
-            l = mid + 1;
+            cout << i;
+            return;
         }
     }
 
-    if (l + (d + l) / (l + 1) <= n)
-    {
-        return true;
-    }
-
-    return false;
+    cout << -1;
 }
 
 int main()
@@ -75,15 +79,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
+        solve();
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }

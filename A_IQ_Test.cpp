@@ -34,15 +34,41 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
+    vector<string> vec(4);
     for (auto &x : vec)
     {
         cin >> x;
     }
+
+    for (int i = 0; i < 4; ++i)
+    {
+        for (int j = 0; j < 4; ++j)
+        {
+            if (j - 1 >= 0 && i - 1 >= 0 && vec[i][j - 1] == vec[i - 1][j] && vec[i - 1][j] == vec[i - 1][j - 1])
+            {
+                return true;
+            }
+
+            if (j - 1 >= 0 && i + 1 < 4 && vec[i][j - 1] == vec[i + 1][j] && vec[i + 1][j] == vec[i + 1][j - 1])
+            {
+                return true;
+            }
+
+            if (j + 1 < 4 && i - 1 >= 0 && vec[i][j + 1] == vec[i - 1][j] && vec[i - 1][j] == vec[i - 1][j + 1])
+            {
+                return true;
+            }
+
+            if (j + 1 < 4 && i + 1 < 4 && vec[i][j + 1] == vec[i + 1][j] && vec[i + 1][j] == vec[i + 1][j + 1])
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 int main()
@@ -51,23 +77,14 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
-
-    cin >> t;
-
-    for (int i = 0; i < t; ++i)
+    if (solve())
     {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
+        cout << "YES";
     }
+    else
+    {
+        cout << "NO";
+    }
+
+    cout << endl;
 }

@@ -34,33 +34,49 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-bool solve()
+void solve()
 {
-    int n, d;
-    cin >> n >> d;
+    int n;
+    cin >> n;
 
-    int l = 0, r = n;
+    string s;
+    cin >> s;
 
-    while (l < r)
+    queue<string> q;
+
+    for (int i = 0; i < 26; ++i)
     {
-        int mid = l + (r - l) / 2;
+        string t = "";
+        t.push_back('a' + i);
+        q.push(t);
+    }
 
-        if (mid + (d + mid) / (mid + 1) <= n)
+    while (!q.empty())
+    {
+        int len = q.size();
+
+        for (int k = 0; k < len; ++k)
         {
-            r = mid;
-        }
-        else
-        {
-            l = mid + 1;
+
+            string cur = q.front();
+            q.pop();
+
+            if (s.find(cur) == string::npos)
+            {
+                cout << cur;
+                return;
+            }
+
+            for (int i = 0; i < 26; ++i)
+            {
+                string temp = cur;
+                temp.push_back('a' + i);
+                q.push(temp);
+            }
         }
     }
 
-    if (l + (d + l) / (l + 1) <= n)
-    {
-        return true;
-    }
-
-    return false;
+    cout << "";
 }
 
 int main()
@@ -75,15 +91,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
+        solve();
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }
