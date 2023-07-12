@@ -36,13 +36,13 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
-    {
-        cin >> x;
-    }
+    int n, u;
+    cin >> n >> u;
+
+    string s;
+    cin >> s;
+
+    
 }
 
 int main()

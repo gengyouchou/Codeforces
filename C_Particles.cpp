@@ -48,45 +48,29 @@ void solve()
 
     ll ret = 0;
 
+    ret = *max_element(vec.begin(), vec.end());
+
+    if (ret < 0)
+    {
+        cout << ret;
+        return;
+    }
+
+    ll even = 0, odd = 0;
+
     for (int i = 0; i < n; ++i)
     {
-        if (vec[i] < 0)
+        if (i % 2 == 0)
         {
-            if (i + 1 < n)
-            {
-                if (ans.size() > 0)
-                {
-                    ans.back() += vec[i + 1];
-                }
-                else
-                {
-                    ans.push_back(vec[i + 1]);
-                }
-                ++i;
-            }
+            even += max(0ll, vec[i]);
         }
         else
         {
-            ans.push_back(vec[i]);
+            odd += max(0ll, vec[i]);
         }
     }
 
-    ret = *max_element(vec.begin(), vec.end());
-
-    for (auto &x : ans)
-    {
-        // cout << x << " ";
-
-        ret = max(ret, x);
-    }
-
-    // cout << endl;
-
-    for (int i = 0; i + 2 < ans.size(); i += 2)
-    {
-        ans[i + 2] = max(ans[i] + ans[i + 2], ans[i + 1]);
-        ret = max(ret, ans[i + 2]);
-    }
+    ret = max(ret, max(even, odd));
 
     cout << ret;
 }
