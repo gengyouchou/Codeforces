@@ -37,34 +37,68 @@ ll M = 1e9 + 7;
 void solve()
 {
     int n;
-    char u;
-    cin >> n >> u;
-
-    string s;
-    cin >> s;
-
-    unordered_set<char> se(s.begin(), s.end());
-
-    if (s[0] == u && se.size() == 1)
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        cout << 0;
-        return;
+        cin >> x;
     }
 
-    for (int i = n - 1; i >= n / 2; --i)
+    vector<ll> prefix(n + 1, 0);
+
+    for (int i = 0; i < n; ++i)
     {
-        if (s[i] == u)
+        prefix[i + 1] = prefix[i] + vec[i];
+    }
+
+    int ans = n;
+
+    for (int k = 0; k < n; ++k)
+    {
+
+        ll target = prefix[k + 1] - prefix[0];
+
+        // cout << "target: " << target << endl;
+
+        int len = k + 1;
+
+        for (int i = k + 1; i < n;)
         {
-            cout << 1 << endl;
+            int j = i;
 
-            cout << i + 1;
-            return;
+            while (j < n && prefix[j + 1] - prefix[i] < target)
+            {
+                ++j;
+            }
+
+            // cout<<prefix[j + 1] - prefix[i]<<endl;
+
+            if (j < n && prefix[j + 1] - prefix[i] == target)
+            {
+
+                len = max(len, j - i + 1);
+            }
+            else
+            {
+                len = n;
+                break;
+            }
+
+            if (j == i)
+            {
+                ++i;
+            }
+            else
+            {
+                i = j + 1;
+            }
         }
+
+        ans = min(ans, len);
     }
 
-    cout << 2 << endl;
-
-    cout << n << " " << n - 1;
+    cout << ans;
+    //<< "end";
 }
 
 int main()

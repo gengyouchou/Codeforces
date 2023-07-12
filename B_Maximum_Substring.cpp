@@ -37,34 +37,35 @@ ll M = 1e9 + 7;
 void solve()
 {
     int n;
-    char u;
-    cin >> n >> u;
+    cin >> n;
 
     string s;
     cin >> s;
 
-    unordered_set<char> se(s.begin(), s.end());
+    ll count0 = 0, count1 = 0;
+    ll count = 0;
 
-    if (s[0] == u && se.size() == 1)
-    {
-        cout << 0;
-        return;
-    }
+    ll c0 = 0, c1 = 0;
 
-    for (int i = n - 1; i >= n / 2; --i)
+    for (auto &c : s)
     {
-        if (s[i] == u)
+        if (c == '0')
         {
-            cout << 1 << endl;
-
-            cout << i + 1;
-            return;
+            count1 = 0;
+            ++count0;
+            ++c0;
         }
+        else
+        {
+            count0 = 0;
+            ++count1;
+            ++c1;
+        }
+
+        count = max(count, max(count1, count0));
     }
 
-    cout << 2 << endl;
-
-    cout << n << " " << n - 1;
+    cout << max(count * count, c0 * c1);
 }
 
 int main()

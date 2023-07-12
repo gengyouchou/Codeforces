@@ -37,34 +37,27 @@ ll M = 1e9 + 7;
 void solve()
 {
     int n;
-    char u;
-    cin >> n >> u;
+    cin >> n;
 
-    string s;
-    cin >> s;
+    string s(n, 0);
 
-    unordered_set<char> se(s.begin(), s.end());
-
-    if (s[0] == u && se.size() == 1)
+    for (int i = 0; i < n; ++i)
     {
-        cout << 0;
-        return;
+        s[i] = 'o';
     }
 
-    for (int i = n - 1; i >= n / 2; --i)
-    {
-        if (s[i] == u)
-        {
-            cout << 1 << endl;
+    ll f1 = 1, f2 = 1, cur = 1;
 
-            cout << i + 1;
-            return;
-        }
+    while (cur <= n)
+    {
+        s[cur - 1] = 'O';
+
+        cur = f1 + f2;
+        f1 = f2;
+        f2 = cur;
     }
 
-    cout << 2 << endl;
-
-    cout << n << " " << n - 1;
+    cout << s;
 }
 
 int main()
@@ -73,23 +66,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

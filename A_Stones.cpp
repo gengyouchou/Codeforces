@@ -37,34 +37,12 @@ ll M = 1e9 + 7;
 void solve()
 {
     int n;
-    char u;
-    cin >> n >> u;
-
-    string s;
-    cin >> s;
-
-    unordered_set<char> se(s.begin(), s.end());
-
-    if (s[0] == u && se.size() == 1)
+    cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        cout << 0;
-        return;
+        cin >> x;
     }
-
-    for (int i = n - 1; i >= n / 2; --i)
-    {
-        if (s[i] == u)
-        {
-            cout << 1 << endl;
-
-            cout << i + 1;
-            return;
-        }
-    }
-
-    cout << 2 << endl;
-
-    cout << n << " " << n - 1;
 }
 
 int main()
