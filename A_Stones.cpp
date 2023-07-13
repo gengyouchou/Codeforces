@@ -30,36 +30,18 @@ const ll N = 1'000'000'000'000L;
 
 ll M = 1e9 + 7;
 
-int dp[101][101][101];
-
-int dfs(int a, int b, int c)
-{
-    if (dp[a][b][c] != -1)
-    {
-        return dp[a][b][c];
-    }
-
-    int ret1 = 0, ret2 = 0;
-
-    if (a >= 1 && b >= 2)
-    {
-        ret1 = 3 + dfs(a - 1, b - 2, c);
-    }
-
-    if (b >= 1 && c >= 2)
-    {
-        ret2 = 3 + dfs(a, b - 1, c - 2);
-    }
-
-    return dp[a][b][c] = max(ret1, ret2);
-}
-
 void solve()
 {
     int a, b, c;
     cin >> a >> b >> c;
 
-    cout << dfs(a, b, c);
+    int second = min(b, c / 2);
+
+    b = b - second;
+
+    int first = min(a, b / 2);
+
+    cout << 3 * (first + second);
 }
 
 int main()
@@ -74,7 +56,6 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        memset(dp, -1, sizeof(dp));
         solve();
 
         // if (solve())

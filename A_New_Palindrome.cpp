@@ -43,33 +43,7 @@ void solve()
     {
         cin >> x;
     }
-
-    unordered_map<int, vector<int>> m;
-
-    for (int i = 0; i < n; ++i)
-    {
-        m[vec[i]].push_back(i);
-    }
-
-    int ans = -1;
-
-    for (auto &[val, v] : m)
-    {
-        sort(v.begin(), v.end());
-
-        for (int j = 0; j + 1 < v.size(); ++j)
-        {
-            ans = max(ans, v[j] + (n - v[j + 1]));
-        }
-    }
-
-    cout << ans;
 }
-
-// len= x+(n-y)+1;
-
-//       [x x 1 x] x 1 x
-// x x 1 [x x 1 x]
 
 int main()
 {

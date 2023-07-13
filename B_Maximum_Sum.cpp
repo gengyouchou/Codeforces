@@ -36,40 +36,44 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
     vector<int> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
 
-    unordered_map<int, vector<int>> m;
+    sort(vec.begin(), vec.end());
 
-    for (int i = 0; i < n; ++i)
+    int i = 0, j = n - 1;
+
+    while (i < j && k > 0)
     {
-        m[vec[i]].push_back(i);
-    }
-
-    int ans = -1;
-
-    for (auto &[val, v] : m)
-    {
-        sort(v.begin(), v.end());
-
-        for (int j = 0; j + 1 < v.size(); ++j)
+        if (i + 1 < j && vec[i] + vec[i + 1] <= vec[j])
         {
-            ans = max(ans, v[j] + (n - v[j + 1]));
+            i += 2;
         }
+        else
+        {
+            --j;
+        }
+
+        --k;
     }
 
-    cout << ans;
+    ll sum = 0;
+
+    for (int p = i; p <= j; ++p)
+    {
+        sum += vec[p];
+    }
+
+    cout << sum;
 }
 
-// len= x+(n-y)+1;
-
-//       [x x 1 x] x 1 x
-// x x 1 [x x 1 x]
+// 15 22 12 10 13 11
+// 10 11 12 13 15 22
 
 int main()
 {
