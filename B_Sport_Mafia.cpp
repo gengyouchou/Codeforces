@@ -34,47 +34,47 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-bool solve()
+void solve()
 {
-    string s;
-    cin >> s;
+    ll n, k;
+    cin >> n >> k;
 
-    int n = s.size();
+    ll l = 0, r = n;
 
-    unordered_set<char> se;
-
-    for (int i = 0; i < n / 2; ++i)
+    while (l < r)
     {
-        se.insert(s[i]);
+        ll mid = r - (r - l) / 2;
+
+        if ((mid * (mid + 1) / 2 - (n - mid)) < k)
+        {
+            l = mid;
+        }
+        else
+        {
+            r = mid - 1;
+        }
     }
 
-    return se.size() >= 2;
+    cout << l;
 }
 
-// abba
-
+// x*(x+1)/2- (n-x)=k
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
-
-        cout << endl;
-    }
+    cout << endl;
 }

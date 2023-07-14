@@ -34,24 +34,40 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-bool solve()
+void solve()
 {
-    string s;
-    cin >> s;
+    int n, m, rb, cb, rd, cd;
+    cin >> n >> m >> rb >> cb >> rd >> cd;
 
-    int n = s.size();
+    int dr = 1, dc = 1;
 
-    unordered_set<char> se;
+    int steps = 0;
 
-    for (int i = 0; i < n / 2; ++i)
+    while (true)
     {
-        se.insert(s[i]);
+
+        if (rb == rd || cb == cd)
+        {
+            cout << steps;
+            return;
+        }
+
+        if (rb == 0 || rb == n)
+        {
+            dr *= -1;
+        }
+
+        if (cb == 0 || cb == m)
+        {
+            dc *= -1;
+        }
+
+        rb += dr;
+        cb += dc;
+
+        ++steps;
     }
-
-    return se.size() >= 2;
 }
-
-// abba
 
 int main()
 {
@@ -65,15 +81,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
+        solve();
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }
