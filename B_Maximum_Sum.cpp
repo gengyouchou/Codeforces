@@ -46,30 +46,23 @@ void solve()
 
     sort(vec.begin(), vec.end());
 
-    int i = 0, j = n - 1;
+    vector<ll> prefix(n + 1, 0);
 
-    while (i < j && k > 0)
+    for (int i = 0; i < n; ++i)
     {
-        if (i + 1 < j && vec[i] + vec[i + 1] <= vec[j])
-        {
-            i += 2;
-        }
-        else
-        {
-            --j;
-        }
-
-        --k;
+        prefix[i + 1] = prefix[i] + vec[i];
     }
 
-    ll sum = 0;
+    ll total = accumulate(vec.begin(), vec.end(), 0ll);
 
-    for (int p = i; p <= j; ++p)
+    ll ans = 0;
+
+    for (int p = 0; p <= k; ++p)
     {
-        sum += vec[p];
+        ans = max(ans, total - (prefix[2 * p] + prefix[n] - prefix[n - (k - p)]));
     }
 
-    cout << sum;
+    cout << ans;
 }
 
 // 15 22 12 10 13 11
