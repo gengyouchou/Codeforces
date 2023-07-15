@@ -36,45 +36,45 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    ll n, k;
-    cin >> n >> k;
+    int n, d;
+    cin >> n >> d;
 
-    ll l = 0, r = n;
-
-    while (l < r)
+    if (n % d != 0)
     {
-        ll mid = r - (r - l) / 2;
-
-        if ((mid * (mid + 1) / 2 - (n - mid)) <= k)
-        {
-            l = mid;
-        }
-        else
-        {
-            r = mid - 1;
-        }
+        cout << 1 << endl;
+        cout << n;
     }
+    else
+    {
+        cout << 2 << endl;
 
-    cout << n - l;
+        cout << 1 << " " << n - 1;
+    }
 }
 
-// x*(x+1)/2- (n-x)=k
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    solve();
+    int t = 0;
 
-    // if (solve())
-    // {
-    //     cout << "YES";
-    // }
-    // else
-    // {
-    //     cout << "NO";
-    // }
+    cin >> t;
 
-    cout << endl;
+    for (int i = 0; i < t; ++i)
+    {
+        solve();
+
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
+
+        cout << endl;
+    }
 }
