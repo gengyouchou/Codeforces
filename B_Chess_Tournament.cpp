@@ -42,8 +42,77 @@ void solve()
     string s;
     cin >> s;
 
-    
+    vector<vector<char>> ans(n, vector<char>(n, 's'));
+
+    for (int i = 0; i < n; ++i)
+    {
+
+        ans[i][i] = 'X';
+
+        if (s[i] == '1')
+        {
+
+            for (int j = 0; j < n; ++j)
+            {
+
+                if (i != j)
+                {
+                    ans[i][j] = '=';
+                    ans[j][i] = '=';
+                }
+            }
+        }
+        else if (s[i] == '2')
+        {
+            bool finded = false;
+
+            for (int j = 0; j < n; ++j)
+            {
+                if (i != j && s[j] == '2' && ans[i][j] == 's')
+                {
+                    ans[i][j] = '+';
+                    ans[j][i] = '-';
+                    finded = true;
+                    break;
+                }
+            }
+
+            if (finded == false)
+            {
+                cout << "NO";
+                return;
+            }
+        }
+    }
+
+    cout << "YES" << endl;
+
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < n; ++j)
+        {
+            if (ans[i][j] == 's')
+            {
+                ans[i][j] = '=';
+            }
+            cout << ans[i][j];
+        }
+
+        cout << endl;
+    }
 }
+
+// 1 : a player wants not to lose any game (i. e. finish the tournament with zero losses);
+// 2 : a player wants to win at least one game.
+
+// 2122
+
+// 0123
+
+// X--+
+// +X++
+// +-X-
+// --+X
 
 int main()
 {
