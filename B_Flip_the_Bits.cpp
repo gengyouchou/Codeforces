@@ -38,45 +38,10 @@ void solve()
 {
     int n;
     cin >> n;
-
-    int l = 1, r = n * n;
-
-    vector<vector<int>> ans(n, vector<int>());
-
-    vector<int> temp;
-
-    for (int i = 0; i < n * n; ++i)
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        if (i % 2 == 0)
-        {
-            temp.push_back(l);
-            ++l;
-        }
-        else
-        {
-            temp.push_back(r);
-            --r;
-        }
-
-        if (temp.size() == n)
-        {
-            if (ans.size() % 2 == 0)
-            {
-                reverse(temp.begin(), temp.end());
-            }
-            ans.push_back(temp);
-            temp.clear();
-        }
-    }
-
-    for (auto &x : ans)
-    {
-        for (auto &y : x)
-        {
-            cout << y << " ";
-        }
-
-        cout << endl;
+        cin >> x;
     }
 }
 
