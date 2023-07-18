@@ -24,7 +24,7 @@ using namespace std;
 using ll = long long;
 using ld = long double;
 
-const ll N = 1'000'000'000'000L;
+const ll N = 1e6;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
@@ -36,36 +36,38 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-
+    int n, k;
+    cin >> n >> k;
     vector<int> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
 
-    vector<vector<ll>> dp(n + 1, vector<ll>(2, 0));
+    int cnt[N];
 
-    // dp[i][0] = no lid
-    // dp[i][1] = have lid
+    memset(cnt, 0, sizeof(cnt));
 
     for (int i = 0; i < n; ++i)
     {
-        if (s[i] == '1')
+        ++cnt[vec[i] % k];
+    }
+
+    ll ans = (cnt[0] > 0);
+
+    for (int i = 1; i * 2 <= k; ++i)
+    {
+        if (cnt[i] == cnt[k - i])
         {
-            dp[i + 1][1] = vec[i] + max(dp[i][0], dp[i][1]);
-            dp[i + 1][0] = dp[i][0] + (i > 0 ? vec[i - 1] : 0);
+            ans += (cnt[i] != 0); // group of i with {i, i+k}
         }
         else
         {
-            dp[i + 1][0] = dp[i + 1][1] = max(dp[i][0], dp[i][1]);
+            ans += ab(cnt[i] - cnt[k - i]);
         }
     }
 
-    cout << max(dp[n][0], dp[n][1]);
+    cout << ans;
 }
 
 int main()

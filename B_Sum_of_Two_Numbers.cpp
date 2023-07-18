@@ -38,34 +38,47 @@ void solve()
 {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
 
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int l = 0, r = n;
+
+    while (l < r)
     {
-        cin >> x;
-    }
 
-    vector<vector<ll>> dp(n + 1, vector<ll>(2, 0));
+        int mid = l + (r - l) / 2;
 
-    // dp[i][0] = no lid
-    // dp[i][1] = have lid
+        int a = n - mid;
+        int b = mid;
 
-    for (int i = 0; i < n; ++i)
-    {
-        if (s[i] == '1')
+        ll counta = 0, countb = 0;
+
+        while (a > 0)
         {
-            dp[i + 1][1] = vec[i] + max(dp[i][0], dp[i][1]);
-            dp[i + 1][0] = dp[i][0] + (i > 0 ? vec[i - 1] : 0);
+            counta += a % 10;
+
+            a /= 10;
+        }
+
+        while (b > 0)
+        {
+            countb += b % 10;
+            b /= 10;
+        }
+
+        if (ab(counta - countb) <= 1)
+        {
+            cout << n - mid << " " << mid;
+            return;
+        }
+
+        if (counta > countb)
+        {
+            l = mid + 1;
         }
         else
         {
-            dp[i + 1][0] = dp[i + 1][1] = max(dp[i][0], dp[i][1]);
+            r = mid;
         }
     }
-
-    cout << max(dp[n][0], dp[n][1]);
 }
 
 int main()

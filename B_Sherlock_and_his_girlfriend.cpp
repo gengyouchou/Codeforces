@@ -38,34 +38,44 @@ void solve()
 {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
 
-    vector<int> vec(n);
-    for (auto &x : vec)
+    if (n <= 2)
     {
-        cin >> x;
+        cout << 1 << endl;
+
+        for (int i = 1; i <= n; ++i)
+        {
+            cout << 1 << " ";
+        }
+
+        return;
     }
 
-    vector<vector<ll>> dp(n + 1, vector<ll>(2, 0));
+    n = n + 1;
 
-    // dp[i][0] = no lid
-    // dp[i][1] = have lid
+    unordered_map<int, int> mp;
 
-    for (int i = 0; i < n; ++i)
+    for (int i = 2; i <= n; ++i)
     {
-        if (s[i] == '1')
+        for (int j = i + i; j <= n; j += i)
         {
-            dp[i + 1][1] = vec[i] + max(dp[i][0], dp[i][1]);
-            dp[i + 1][0] = dp[i][0] + (i > 0 ? vec[i - 1] : 0);
+            mp[j] = 2;
+        }
+    }
+
+    cout << 2 << endl;
+
+    for (int i = 2; i <= n; ++i)
+    {
+        if (mp.count(i))
+        {
+            cout << 2 << " ";
         }
         else
         {
-            dp[i + 1][0] = dp[i + 1][1] = max(dp[i][0], dp[i][1]);
+            cout << 1 << " ";
         }
     }
-
-    cout << max(dp[n][0], dp[n][1]);
 }
 
 int main()
@@ -74,23 +84,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

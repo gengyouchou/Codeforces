@@ -34,38 +34,42 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-
     vector<int> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
 
-    vector<vector<ll>> dp(n + 1, vector<ll>(2, 0));
+    int count1 = 0;
 
-    // dp[i][0] = no lid
-    // dp[i][1] = have lid
-
-    for (int i = 0; i < n; ++i)
+    for (auto &x : vec)
     {
-        if (s[i] == '1')
+        if (x == 1)
         {
-            dp[i + 1][1] = vec[i] + max(dp[i][0], dp[i][1]);
-            dp[i + 1][0] = dp[i][0] + (i > 0 ? vec[i - 1] : 0);
-        }
-        else
-        {
-            dp[i + 1][0] = dp[i + 1][1] = max(dp[i][0], dp[i][1]);
+            ++count1;
         }
     }
 
-    cout << max(dp[n][0], dp[n][1]);
+    if (count1 == 0)
+    {
+        return true;
+    }
+
+    sort(vec.begin(), vec.end());
+
+    for (int i = 1; i < n; ++i)
+    {
+        if (vec[i] - vec[i - 1] == 1)
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 int main()
@@ -80,16 +84,15 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
