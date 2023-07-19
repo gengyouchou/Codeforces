@@ -34,38 +34,28 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-bool solve()
+void solve()
 {
     int n;
     cin >> n;
+    vector<int> vec(n);
+    for (auto &x : vec)
+    {
+        cin >> x;
+    }
 
-    string s1, s2;
-
-    cin >> s1 >> s2;
-
-    s1.push_back('0');
-    s2.push_back('0');
-
-    int count = 0;
+    int ans = (1 << 30) - 1;
 
     for (int i = 0; i < n; ++i)
     {
-        count += (s1[i] == '1') - (s1[i] == '0');
-
-        if ((s1[i] == s2[i]) != (s1[i + 1] == s2[i + 1]) && count != 0)
+        if (vec[i] != i)
         {
-            return false;
+            ans &= vec[i];
         }
     }
 
-    return true;
+    cout << ans;
 }
-
-// 01[110100]00
-// 01 23344444
-
-// 01[001011]00
-// 01 11223444
 
 int main()
 {
@@ -79,15 +69,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
+        solve();
 
-        if (solve())
-        {
-            cout << "YES";
-        }
-        else
-        {
-            cout << "NO";
-        }
+        // if (solve())
+        // {
+        //     cout << "YES";
+        // }
+        // else
+        // {
+        //     cout << "NO";
+        // }
 
         cout << endl;
     }
