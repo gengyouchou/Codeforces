@@ -20,13 +20,12 @@
 #include <vector>
 
 // setprecision example
-#include <iomanip>  // std::setprecision
+#include <iomanip> // std::setprecision
 
 using namespace std;
 
 using ll = long long;
 using ld = long double;
-using ull = unsigned long long;
 
 const ll N = 1'000'000'000'000L;
 
@@ -42,11 +41,25 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
+    vector<vector<int>> vec(n, vector<int>(2, 0));
     for (auto &x : vec)
     {
-        cin >> x;
+        cin >> x[0] >> x[1];
     }
+
+    std::map<int, int, std::greater<int>> mp;
+
+    for (int i = 0; i < n; ++i)
+    {
+        if (vec[i][0] <= 10)
+        {
+            mp[vec[i][1]] = i + 1;
+        }
+    }
+
+    auto iter = mp.begin();
+
+    cout << iter->second;
 }
 
 int main()

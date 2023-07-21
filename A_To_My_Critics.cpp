@@ -20,13 +20,12 @@
 #include <vector>
 
 // setprecision example
-#include <iomanip>  // std::setprecision
+#include <iomanip> // std::setprecision
 
 using namespace std;
 
 using ll = long long;
 using ld = long double;
-using ull = unsigned long long;
 
 const ll N = 1'000'000'000'000L;
 
@@ -38,15 +37,19 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    int mn = min(a, min(b, c));
+
+    if (a + b + c - mn >= 10)
     {
-        cin >> x;
+        return true;
     }
+
+    return false;
 }
 
 int main()
@@ -61,16 +64,15 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }

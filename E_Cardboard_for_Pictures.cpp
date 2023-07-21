@@ -20,13 +20,13 @@
 #include <vector>
 
 // setprecision example
-#include <iomanip>  // std::setprecision
+#include <iomanip> // std::setprecision
 
 using namespace std;
 
 using ll = long long;
-using ld = long double;
 using ull = unsigned long long;
+using ld = long double;
 
 const ll N = 1'000'000'000'000L;
 
@@ -38,16 +38,56 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
+bool tooBigger(vector<ll> &vec, const ll c, ll w)
+{
+
+    ll sum = 0;
+
+    for (auto &x : vec)
+    {
+        sum += (2 * w + x) * (2 * w + x);
+
+        if (sum >= c)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
+    ll n, c;
+    cin >> n >> c;
+
+    vector<ll> vec(n);
     for (auto &x : vec)
     {
         cin >> x;
     }
+
+    ll l = 0, r = sqrt(c);
+
+    while (l < r)
+    {
+
+        ll mid = l + (r - l) / 2;
+
+        if (tooBigger(vec, c, mid))
+        {
+            r = mid;
+        }
+        else
+        {
+            l = mid + 1;
+        }
+    }
+
+    cout << l;
 }
+
+// (2*w+x)^2+...=c
 
 int main()
 {
