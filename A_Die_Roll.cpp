@@ -19,9 +19,6 @@
 #include <unordered_set>
 #include <vector>
 
-// setprecision example
-#include <iomanip>  // std::setprecision
-
 using namespace std;
 
 using ll = long long;
@@ -39,14 +36,30 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int a, b;
+    cin >> a >> b;
+
+    int h = max(a, b);
+
+    int p = 6 - h + 1;
+    int r = 6;
+
+    if (p % 2 == 0)
     {
-        cin >> x;
+        p /= 2;
+        r /= 2;
     }
+
+    if (p % 3 == 0)
+    {
+        p /= 3;
+        r /= 3;
+    }
+
+    cout << p << "/" << r;
 }
+
+// 1 2 3 4 5 6
 
 int main()
 {
@@ -54,23 +67,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

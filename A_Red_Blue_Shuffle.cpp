@@ -19,9 +19,6 @@
 #include <unordered_set>
 #include <vector>
 
-// setprecision example
-#include <iomanip>  // std::setprecision
-
 using namespace std;
 
 using ll = long long;
@@ -41,12 +38,38 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    string r, b;
+    cin >> r >> b;
+
+    int rwin = 0, bwin = 0;
+
+    for (int i = 0; i < n; ++i)
     {
-        cin >> x;
+        if (r[i] > b[i])
+        {
+            ++rwin;
+        }
+        else if (r[i] < b[i])
+        {
+            ++bwin;
+        }
+    }
+
+    if (rwin > bwin)
+    {
+        cout << "RED";
+    }
+    else if (rwin < bwin)
+    {
+        cout << "BLUE";
+    }
+    else
+    {
+        cout << "EQUAL";
     }
 }
+
 
 int main()
 {
