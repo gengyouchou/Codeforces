@@ -40,34 +40,51 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
+
+    vector<string> vec(3);
     for (auto &x : vec)
     {
         cin >> x;
     }
 
-    std::map<int, int, std::greater<int>> mp;
-
-    for (auto &x : vec)
+    for (int i = 0; i < 3; ++i)
     {
-        ll cur = x;
-
-        while (cur <= n)
+        int j = 0;
+        if (vec[i][j] != '.' && vec[i][j] == vec[i][j + 1] && vec[i][j + 1] == vec[i][j + 2])
         {
-            ++mp[cur];
-
-            cur += cur;
+            cout << vec[i][j];
+            return;
         }
     }
 
-    cout << mp.begin()->first;
-}
+    for (int j = 0; j < 3; ++j)
+    {
+        int i = 0;
+        if (vec[i][j] != '.' && vec[i][j] == vec[i + 1][j] && vec[i + 1][j] == vec[i + 2][j])
+        {
+            cout << vec[i][j];
+            return;
+        }
+    }
 
-// 3 4 4 4
-// 4 5 5 5 5 ..... 8 16 32
-// 1 2 3 4 5            32
+    int j = 0, i = 0;
+
+    if (vec[i][j] != '.' && vec[i][j] == vec[i + 1][j + 1] && vec[i + 1][j + 1] == vec[i + 2][j + 2])
+    {
+        cout << vec[i][j];
+        return;
+    }
+
+    j = 2, i = 0;
+
+    if (vec[i][j] != '.' && vec[i][j] == vec[i + 1][j - 1] && vec[i + 1][j - 1] == vec[i + 2][j - 2])
+    {
+        cout << vec[i][j];
+        return;
+    }
+
+    cout << "DRAW";
+}
 
 int main()
 {
@@ -95,14 +112,3 @@ int main()
         cout << endl;
     }
 }
-
-// 3
-// 3
-// 3
-// 5
-// 0
-// 4
-// 4
-
-// =====
-// Used: 15 ms, 0 KB

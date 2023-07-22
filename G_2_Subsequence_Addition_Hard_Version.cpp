@@ -38,7 +38,7 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
     int n;
     cin >> n;
@@ -48,26 +48,27 @@ void solve()
         cin >> x;
     }
 
-    std::map<int, int, std::greater<int>> mp;
+    sort(vec.begin(), vec.end());
 
-    for (auto &x : vec)
+    ll sum = vec[0];
+
+    if (sum != 1)
     {
-        ll cur = x;
-
-        while (cur <= n)
-        {
-            ++mp[cur];
-
-            cur += cur;
-        }
+        return false;
     }
 
-    cout << mp.begin()->first;
-}
+    for (int i = 1; i < n; ++i)
+    {
+        if (sum < vec[i])
+        {
+            return false;
+        }
 
-// 3 4 4 4
-// 4 5 5 5 5 ..... 8 16 32
-// 1 2 3 4 5            32
+        sum += vec[i];
+    }
+
+    return true;
+}
 
 int main()
 {
@@ -81,28 +82,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
 }
-
-// 3
-// 3
-// 3
-// 5
-// 0
-// 4
-// 4
-
-// =====
-// Used: 15 ms, 0 KB

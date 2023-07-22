@@ -38,7 +38,7 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
     int n;
     cin >> n;
@@ -48,26 +48,41 @@ void solve()
         cin >> x;
     }
 
-    std::map<int, int, std::greater<int>> mp;
+    sort(vec.begin(), vec.end());
 
-    for (auto &x : vec)
+    vector<bool> dp(vec[n - 1] + 1, false);
+
+    if (vec[0] != 1)
     {
-        ll cur = x;
+        return false;
+    }
 
-        while (cur <= n)
+    dp[0] = true;
+
+    dp[1] = true;
+
+    for (int i = 1; i < n; ++i)
+    {
+
+        if (dp[vec[i]] != true)
         {
-            ++mp[cur];
+            return false;
+        }
 
-            cur += cur;
+        for (int j = vec[n - 1]; j >= vec[i]; --j)
+        {
+            dp[j] = dp[j] | dp[j - vec[i]];
         }
     }
 
-    cout << mp.begin()->first;
+    return true;
 }
 
-// 3 4 4 4
-// 4 5 5 5 5 ..... 8 16 32
-// 1 2 3 4 5            32
+// dp[1]
+// dp[1]
+// dp[2]
+// dp[3]
+//
 
 int main()
 {
@@ -81,28 +96,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
 }
-
-// 3
-// 3
-// 3
-// 5
-// 0
-// 4
-// 4
-
-// =====
-// Used: 15 ms, 0 KB
