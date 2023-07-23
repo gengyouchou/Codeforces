@@ -48,38 +48,31 @@ void solve()
         cin >> x;
     }
 
-    vector<ll> cnt(n + 1, 0), mx(n + 1, 0);
+    vector<int> temp = vec;
 
-    for (auto &x : vec)
+    sort(vec.begin(), vec.end());
+
+    unordered_map<int, int> mp;
+
+    int cur = 1;
+
+    mp[vec[n - 1]] = cur;
+
+    for (int i = n - 1; i >= 1; --i)
     {
-        if (x <= n)
+        if (vec[i] != vec[i - 1])
         {
-            ++cnt[x];
+            cur = n - i + 1;
         }
+
+        mp[vec[i - 1]] = cur;
     }
 
-    ll ans = 0;
-
-    for (int x = 1; x <= n; ++x)
+    for (auto &x : temp)
     {
-        int cur = x;
-
-        while (cur <= n)
-        {
-            mx[cur] += cnt[x];
-
-            ans = max(ans, mx[cur]);
-
-            cur += x;
-        }
+        cout << mp[x] << " ";
     }
-
-    cout << ans;
 }
-
-// 3 4 4 4
-// 4 5 5 5 5 ..... 8 16 32
-// 1 2 3 4 5            32
 
 int main()
 {
@@ -87,34 +80,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }
-
-// 3
-// 3
-// 3
-// 5
-// 0
-// 4
-// 4
-
-// =====
-// Used: 15 ms, 0 KB

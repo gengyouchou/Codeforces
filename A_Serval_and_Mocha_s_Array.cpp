@@ -38,7 +38,7 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
     int n;
     cin >> n;
@@ -48,38 +48,19 @@ void solve()
         cin >> x;
     }
 
-    vector<ll> cnt(n + 1, 0), mx(n + 1, 0);
-
-    for (auto &x : vec)
+    for (int i = 0; i < n; ++i)
     {
-        if (x <= n)
+        for (int j = 0; j < n; ++j)
         {
-            ++cnt[x];
+            if (gcd(vec[i], vec[j]) <= 2)
+            {
+                return true;
+            }
         }
     }
 
-    ll ans = 0;
-
-    for (int x = 1; x <= n; ++x)
-    {
-        int cur = x;
-
-        while (cur <= n)
-        {
-            mx[cur] += cnt[x];
-
-            ans = max(ans, mx[cur]);
-
-            cur += x;
-        }
-    }
-
-    cout << ans;
+    return false;
 }
-
-// 3 4 4 4
-// 4 5 5 5 5 ..... 8 16 32
-// 1 2 3 4 5            32
 
 int main()
 {
@@ -93,28 +74,16 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
 }
-
-// 3
-// 3
-// 3
-// 5
-// 0
-// 4
-// 4
-
-// =====
-// Used: 15 ms, 0 KB
