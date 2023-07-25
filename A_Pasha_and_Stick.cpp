@@ -40,33 +40,24 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    ll n = 0, x = 0, t = 0;
+    ll n;
+    cin >> n;
 
-    cin >> n >> x >> t;
-
-    // n=4, x=2, t=5
-
-    //(0, 5), (2, 7) (4, 9) (6, 11)
-    //    0      1      2      2     .... 2
-
-    // 3, 3, 10
-
-    // (0, 10) (3, 13) (6, 16)
-    // 0          1       2
-
-    ll first = t / x;
-
-    if (first >= n)
+    if (n % 2 == 1)
     {
-        cout << (n - 1) * n / 2;
+        cout << 0;
         return;
     }
 
-    ll a = first * (first + 1) / 2;
-    ll b = first * (n - first - 1);
+    n = n / 2;
+    --n;
 
-    cout << a + b;
+    cout << n / 2;
 }
+
+// |----|----------|----------|----|
+//        n/2
+//  n/4
 
 int main()
 {
@@ -74,23 +65,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

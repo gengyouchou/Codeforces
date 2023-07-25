@@ -40,33 +40,25 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    ll n = 0, x = 0, t = 0;
+    int n;
+    cin >> n;
 
-    cin >> n >> x >> t;
+    ll count = 0, cur = 1;
 
-    // n=4, x=2, t=5
-
-    //(0, 5), (2, 7) (4, 9) (6, 11)
-    //    0      1      2      2     .... 2
-
-    // 3, 3, 10
-
-    // (0, 10) (3, 13) (6, 16)
-    // 0          1       2
-
-    ll first = t / x;
-
-    if (first >= n)
+    for (int i = 0; i < n; ++i)
     {
-        cout << (n - 1) * n / 2;
-        return;
+        cur *= 2;
+        count += cur;
     }
 
-    ll a = first * (first + 1) / 2;
-    ll b = first * (n - first - 1);
-
-    cout << a + b;
+    cout << count;
 }
+
+// 6
+// 1位数的，7 8
+// 2位数的，77 78 87 88
+// 3位数的，777 778 787 788 877 878 887 888
+// .....
 
 int main()
 {
@@ -74,23 +66,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }
