@@ -48,60 +48,46 @@ bool solve()
         cin >> x;
     }
 
-    ll mn = 1, mx = n;
+    vector<bool> visited(n + 1, false);
+    vector<ll> error;
 
-    multiset<ll> mst;
+    vec.insert(vec.begin(), 0);
 
-    mst.insert(vec[0]);
-
-    for (int i = 0; i + 1 < n - 1; ++i)
+    for (int i = 0; i + 1 < n; ++i)
     {
-        int diff = vec[i + 1] - vec[i];
+        ll diff = vec[i + 1] - vec[i];
 
-        mst.insert(diff);
-    }
-
-    ll mis1 = 0, mis2 = 0, count = 0;
-
-    ll cur = 1;
-
-    auto tempmst = mst;
-
-    for (auto &v : mst)
-    {
-
-        while (v != cur)
+        if (diff >= 1 && diff <= n && visited[diff] == false)
         {
-            // cout << v << " " << cur << endl;
-            if (mis1 == 0)
-            {
-                mis1 = cur;
-            }
-            else if (mis2 == 0)
-            {
-                mis2 = cur;
-            }
-            else
-            {
-                return false;
-            }
-
-            ++cur;
-
-            if (cur > n)
-            {
-                break;
-            }
+            visited[diff] = true;
         }
-
-        // cout << v << " " << cur << endl;
-
-        tempmst.erase(tempmst.find(v));
+        else
+        {
+            error.push_back(diff);
+        }
     }
 
-    cout << mis1 << " " << mis2 << endl;
+    if (error.size() >= 2)
+    {
+        return false;
+    }
 
-    return tempmst.find(mis1 + mis2) != tempmst.end();
+    if (error.empty())
+    {
+        return true;
+    }
+
+    ll sum = 0;
+
+    for (int i = 1; i < n + 1; ++i)
+    {
+        if (visited[i] == false)
+        {
+            sum += i;
+        }
+    }
+
+    return sum == error[0];
 }
 
 //
