@@ -20,7 +20,7 @@
 #include <vector>
 
 // setprecision example
-#include <iomanip>  // std::setprecision
+#include <iomanip> // std::setprecision
 
 using namespace std;
 
@@ -42,12 +42,35 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+
+    if (n % 2 == 1)
     {
-        cin >> x;
+
+        // 1 2 3
+        // 1 3 2
+
+        cout << 0;
+        return;
     }
+
+    // 1 2 3 4
+    // 2 1 4 3
+
+    ll count = 1;
+    ll M = 998244353;
+
+    for (ll i = 1; i <= n / 2; ++i)
+    {
+        count *= i;
+        count %= M;
+    }
+
+    cout << count * count % M;
 }
+
+// even = (n / 2 * (n / 2-1) * (n / 2- 2) * … 1)
+
+// odd = (n / 2 * (n / 2 - 1) * (n / 2 - 2) * … 1)
 
 int main()
 {
