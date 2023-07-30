@@ -40,25 +40,45 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    ll n;
+    int n;
     cin >> n;
-
-    ll ans = 1;
-
-    for (ll i = 1; i <= (2 * n - 1); ++i)
+    vector<string> vec(n);
+    for (auto &x : vec)
     {
-        ans *= i;
-        ans %= M;
+        cin >> x;
     }
 
-    ans *= n;
+    ll ans = 0;
 
-    cout << ans % M;
+    for (int i = 0; i < n; ++i)
+    {
+        ll cnt = 0;
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (vec[i][j] == 'C')
+            {
+                ++cnt;
+            }
+        }
+
+        ans += cnt * (cnt - 1) / 2;
+
+        cnt = 0;
+
+        for (int j = 0; j < n; ++j)
+        {
+            if (vec[j][i] == 'C')
+            {
+                ++cnt;
+            }
+        }
+
+        ans += cnt * (cnt - 1) / 2;
+    }
+
+    cout << ans;
 }
-
-// n = 2
-// there are 12
-// permutations: [1,2,3,4],[1,2,4,3],[1,3,2,4],[1,3,4,2],[1,4,2,3],[2,1,3,4],[2,3,1,4],[2,3,4,1],[2,4,1,3],[3,1,2,4],[3,4,1,2],[4,1,2,3].
 
 int main()
 {
@@ -66,23 +86,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }

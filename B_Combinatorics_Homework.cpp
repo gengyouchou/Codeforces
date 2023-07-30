@@ -20,7 +20,7 @@
 #include <vector>
 
 // setprecision example
-#include <iomanip> // std::setprecision
+#include <iomanip>  // std::setprecision
 
 using namespace std;
 
@@ -40,25 +40,14 @@ ll M = 1e9 + 7;
 
 void solve()
 {
-    ll n;
+    int n;
     cin >> n;
-
-    ll ans = 1;
-
-    for (ll i = 1; i <= (2 * n - 1); ++i)
+    vector<int> vec(n);
+    for (auto &x : vec)
     {
-        ans *= i;
-        ans %= M;
+        cin >> x;
     }
-
-    ans *= n;
-
-    cout << ans % M;
 }
-
-// n = 2
-// there are 12
-// permutations: [1,2,3,4],[1,2,4,3],[1,3,2,4],[1,3,4,2],[1,4,2,3],[2,1,3,4],[2,3,1,4],[2,3,4,1],[2,4,1,3],[3,1,2,4],[3,4,1,2],[4,1,2,3].
 
 int main()
 {
