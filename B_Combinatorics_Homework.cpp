@@ -20,7 +20,7 @@
 #include <vector>
 
 // setprecision example
-#include <iomanip>  // std::setprecision
+#include <iomanip> // std::setprecision
 
 using namespace std;
 
@@ -38,16 +38,42 @@ ll M = 1e9 + 7;
 
 // memset(dp, -1, sizeof(dp));
 
-void solve()
+bool solve()
 {
-    int n;
-    cin >> n;
-    vector<int> vec(n);
-    for (auto &x : vec)
+    int a, b, c, m;
+    cin >> a >> b >> c >> m;
+
+    if (a < b)
     {
-        cin >> x;
+        swap(a, b);
     }
+
+    if (a < c)
+    {
+        swap(a, c);
+    }
+
+    if (b < c)
+    {
+        swap(b, c);
+    }
+
+    int mx = a + b + c - 3;
+    int mn = max(0, a - b - c - 1);
+
+    if (m <= mx && m >= mn)
+    {
+        return true;
+    }
+
+    return false;
 }
+
+// aaabbcc
+
+// abc abc
+
+// ab ab ac ac a
 
 int main()
 {
@@ -61,16 +87,15 @@ int main()
 
     for (int i = 0; i < t; ++i)
     {
-        solve();
 
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
+        if (solve())
+        {
+            cout << "YES";
+        }
+        else
+        {
+            cout << "NO";
+        }
 
         cout << endl;
     }
