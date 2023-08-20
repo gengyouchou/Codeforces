@@ -101,25 +101,42 @@ void solve()
 
     UnionFindSet s(n);
 
-    for (auto &x : vec)
+    for (int j = 0; j < n; ++j)
     {
-        s.Union(x[0], x[1]);
+        s.Union(vec[0][j], vec[1][j]);
     }
 
     unordered_set<int> se;
 
-    for (auto &x : vec)
+    for (int i = 1; i <= n; ++i)
     {
-        for (auto &y : x)
-        {
-            se.insert(s.Find(y));
-        }
+        se.insert(s.Find(i));
     }
 
     ll cnt = se.size();
 
-    cout << se.size();
+    ll ans = 1;
+
+    for (int i = 0; i < cnt; ++i)
+    {
+        ans *= 2;
+        ans %= M;
+    }
+
+    cout << ans;
 }
+
+// 2 6 5 1 4 3 7 8
+// 3 8 7 5 1 2 4 6
+
+// 2
+// 3
+
+// 6
+// 8
+
+// 5 7 4 1
+// 7 4 1 5
 
 int main()
 {
