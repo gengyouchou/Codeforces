@@ -20,7 +20,7 @@
 #include <vector>
 
 // setprecision example
-#include <iomanip>  // std::setprecision
+#include <iomanip> // std::setprecision
 
 using namespace std;
 
@@ -47,7 +47,36 @@ void solve()
     {
         cin >> x;
     }
+
+    sort(vec.begin(), vec.end());
+
+    int j = n - 1, i = j - 1;
+
+    int count = 0;
+
+    while (i >= 0)
+    {
+        if (vec[j] > vec[i])
+        {
+            --j;
+            --i;
+            ++count;
+        }
+        else
+        {
+            --i;
+        }
+    }
+
+    cout << count;
 }
+
+// 10 1 1 1 5 5 3
+
+//  1 5 5 3 10 1 1
+
+// 1 1 1 3 5 5 10
+//     i   j
 
 int main()
 {
@@ -55,23 +84,16 @@ int main()
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int t = 0;
+    solve();
 
-    cin >> t;
+    // if (solve())
+    // {
+    //     cout << "YES";
+    // }
+    // else
+    // {
+    //     cout << "NO";
+    // }
 
-    for (int i = 0; i < t; ++i)
-    {
-        solve();
-
-        // if (solve())
-        // {
-        //     cout << "YES";
-        // }
-        // else
-        // {
-        //     cout << "NO";
-        // }
-
-        cout << endl;
-    }
+    cout << endl;
 }
