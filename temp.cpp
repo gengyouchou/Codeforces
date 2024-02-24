@@ -20,7 +20,7 @@
 #include <vector>
 
 // setprecision example
-#include <iomanip>  // std::setprecision
+#include <iomanip> // std::setprecision
 
 using namespace std;
 
@@ -28,7 +28,7 @@ using ll = long long;
 using ld = long double;
 using ull = unsigned long long;
 
-const ll N = 1'000'000'000'000L;
+const ll N = 1000000000000L;
 
 #define ab(x) (((x) < 0) ? -(x) : (x))
 
